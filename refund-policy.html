@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refund Policy | KWĒN</title>
+<meta name="description" content="KWĒN's refund and returns policy - eligibility, process, and timelines.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  body { overflow-x: hidden; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fadeUp { animation: fadeUp 0.6s ease forwards; }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+  #mobileMenu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+  #mobileMenu.open { transform: translateX(0); }
+  .nav-link { position: relative; }
+  .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: #000; transition: width 0.3s ease; }
+  .nav-link:hover::after { width: 100%; }
+  .toc-link.active { color: #000; font-weight: 600; border-left-color: #000 !important; }
+
+  /* Eligibility check icons */
+  .check-yes { color: #22c55e; }
+  .check-no { color: #ef4444; }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#faf7f2]/90 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display text-2xl md:text-3xl font-bold tracking-widest">KWĒN</a>
+    <div class="hidden lg:flex items-center gap-8 text-sm uppercase tracking-wide">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <button id="menuBtn" aria-label="Menu" class="lg:hidden">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+    </button>
+  </div>
+</nav>
+
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#faf7f2] z-50 shadow-2xl lg:hidden">
+  <div class="flex justify-end p-6">
+    <button id="closeMenuBtn">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="flex flex-col gap-6 px-8 text-lg uppercase tracking-wide">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<section class="pt-32 pb-10 px-6 max-w-5xl mx-auto">
+  <p class="text-xs text-black/50 mb-2 animate-fadeUp">Home / Refund Policy</p>
+  <h1 class="font-display text-4xl md:text-5xl font-bold animate-fadeUp">Refund Policy</h1>
+  <p class="text-black/50 text-sm mt-2 animate-fadeUp">Last updated: July 1, 2026</p>
+</section>
+
+<!-- ============ CONTENT LAYOUT ============ -->
+<section class="px-6 max-w-5xl mx-auto pb-24">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+
+    <!-- Table of Contents -->
+    <aside class="hidden lg:block lg:col-span-1">
+      <div class="sticky top-28 space-y-1">
+        <p class="text-xs uppercase tracking-widest text-black/40 mb-3">On This Page</p>
+        <a href="#eligibility" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Return Eligibility</a>
+        <a href="#process" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Return Process</a>
+        <a href="#refund-timeline" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Refund Timeline</a>
+        <a href="#non-returnable" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Non-Returnable Items</a>
+        <a href="#exchanges" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Exchanges</a>
+      </div>
+    </aside>
+
+    <!-- Policy Content -->
+    <div class="lg:col-span-3 bg-white rounded-2xl p-6 md:p-10 space-y-10 text-sm leading-relaxed text-black/70">
+
+      <p>Your satisfaction matters to us. If something isn't right with your order, here's how our return and refund process works.</p>
+
+      <div id="eligibility">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">1. Return Eligibility</h2>
+        <p class="mb-4">Items are eligible for return within <strong class="text-black">7 days</strong> of delivery if they meet the following criteria:</p>
+        <ul class="space-y-2">
+          <li class="flex items-start gap-2"><span class="check-yes">✓</span> Unworn, unwashed, and undamaged</li>
+          <li class="flex items-start gap-2"><span class="check-yes">✓</span> Original tags and packaging intact</li>
+          <li class="flex items-start gap-2"><span class="check-yes">✓</span> Proof of purchase (order ID)</li>
+          <li class="flex items-start gap-2"><span class="check-no">✗</span> Not a final sale or intimate wear item</li>
+        </ul>
+      </div>
+
+      <div id="process">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">2. Return Process</h2>
+        <ol class="list-decimal pl-5 space-y-2">
+          <li>Go to Dashboard → Order History and select the item to return</li>
+          <li>Choose your reason for return and submit the request</li>
+          <li>Our courier partner will schedule a free pickup within 2–3 business days</li>
+          <li>Once we receive and inspect the item, your refund will be processed</li>
+        </ol>
+      </div>
+
+      <div id="refund-timeline">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">3. Refund Timeline</h2>
+        <p>Refunds are processed within <strong class="text-black">5–7 business days</strong> after we receive and inspect the returned item. The amount is credited to your original payment method (or store credit, if you choose). COD orders are refunded via bank transfer or UPI.</p>
+      </div>
+
+      <div id="non-returnable">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">4. Non-Returnable Items</h2>
+        <p class="mb-3">The following items cannot be returned or refunded:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Items marked "Final Sale"</li>
+          <li>Innerwear, swimwear, and intimate apparel (for hygiene reasons)</li>
+          <li>Accessories with broken hygiene seals</li>
+          <li>Gift cards</li>
+        </ul>
+      </div>
+
+      <div id="exchanges">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">5. Exchanges</h2>
+        <p>Need a different size or color? You can request an exchange instead of a refund from the same Order History page — subject to stock availability. Exchange requests follow the same 7-day window and eligibility criteria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  const sections = document.querySelectorAll('[id]');
+  const tocLinks = document.querySelectorAll('.toc-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 150) current = section.getAttribute('id');
+    });
+    tocLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

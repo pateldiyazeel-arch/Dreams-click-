@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KWĒN | Korean Party Wear & Premium Fashion</title>
+<meta name="description" content="KWĒN - Premium Korean party wear and fashion for women. K-pop inspired outfits, trendy streetwear, and luxury styling.">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --pink: #f5d6dd;
+    --lavender: #d9d3f0;
+    --beige: #f1e8dd;
+    --silver: #c9c9c9;
+  }
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+
+  body { overflow-x: hidden; }
+
+  /* Fade up animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeUp { animation: fadeUp 1s ease forwards; }
+  .delay-1 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+  .delay-2 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+  .delay-3 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+
+  /* Floating animation for hero decor */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  .animate-float { animation: float 4s ease-in-out infinite; }
+
+  /* Shimmer text effect */
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  .shimmer-text {
+    background: linear-gradient(90deg, #000 0%, #f5d6dd 25%, #000 50%, #d9d3f0 75%, #000 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 6s linear infinite;
+  }
+
+  /* Nav link underline animation */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: #000;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  /* Scroll reveal (used later via JS) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+
+  /* Mobile menu slide */
+  #mobileMenu {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(100%);
+  }
+  #mobileMenu.open { transform: translateX(0); }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#faf7f2]/90 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    
+    <!-- Logo -->
+    <a href="#" class="font-display text-2xl md:text-3xl font-bold tracking-widest">KWĒN</a>
+
+    <!-- Desktop Links -->
+    <div class="hidden lg:flex items-center gap-8 text-sm uppercase tracking-wide">
+      <a href="#" class="index.html">Home</a>
+      <a href="#" class="shop.html">Shop</a>
+      <a href="#" class="nav-link">New Arrivals</a>
+      <a href="#" class="nav-link">Party Wear</a>
+      <a href="#" class="nav-link">Sale</a>
+      <a href="#" class="about.html">About</a>
+    </div>
+
+    <!-- Icons -->
+    <div class="flex items-center gap-5">
+      <button aria-label="Search" class="hover:opacity-60 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+      </button>
+      <button aria-label="Wishlist" class="hidden sm:block hover:opacity-60 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+        </svg>
+      </button>
+      <button aria-label="Account" class="hidden sm:block hover:opacity-60 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.964 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </button>
+      <button aria-label="Cart" class="relative hover:opacity-60 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.980-4.804 2.558-7.436a1.125 1.125 0 00-1.087-1.564H5.106M7.5 14.25L5.106 5.272M7.5 14.25L5.106 5.272" />
+        </svg>
+        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+      </button>
+
+      <!-- Mobile Hamburger -->
+      <button id="menuBtn" aria-label="Menu" class="lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#faf7f2] z-50 shadow-2xl lg:hidden">
+  <div class="flex justify-end p-6">
+    <button id="closeMenuBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <div class="flex flex-col gap-6 px-8 text-lg uppercase tracking-wide">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="#">New Arrivals</a>
+    <a href="#">Party Wear</a>
+    <a href="#">Sale</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- ============ HERO SECTION ============ -->
+<section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-gradient-to-br from-[#faf7f2] via-[#f5d6dd]/30 to-[#d9d3f0]/40">
+
+  <!-- Floating decor circles -->
+  <div class="absolute top-24 left-10 w-24 h-24 rounded-full bg-[#f5d6dd]/50 blur-xl animate-float"></div>
+  <div class="absolute bottom-32 right-16 w-32 h-32 rounded-full bg-[#d9d3f0]/50 blur-xl animate-float" style="animation-delay:1s;"></div>
+  <div class="absolute top-1/2 right-1/4 w-16 h-16 rounded-full bg-[#c9c9c9]/40 blur-lg animate-float" style="animation-delay:2s;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+    <p class="uppercase tracking-[0.3em] text-xs md:text-sm mb-4 animate-fadeUp">Korean Party Wear · Premium Edit</p>
+
+    <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight shimmer-text animate-fadeUp delay-1">
+      KWĒN
+    </h1>
+
+    <p class="mt-6 max-w-xl mx-auto text-base md:text-lg text-black/70 animate-fadeUp delay-2">
+      Where Seoul street style meets luxury party glam. Discover outfits made for the moments worth dressing up for.
+    </p>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fadeUp delay-3">
+      <button class="px-8 py-3 bg-black text-white rounded-full uppercase text-sm tracking-widest hover:bg-black/80 transition-all hover:scale-105">
+        Shop New Arrivals
+      </button>
+      <button class="px-8 py-3 border border-black rounded-full uppercase text-sm tracking-widest hover:bg-black hover:text-white transition-all hover:scale-105">
+        Explore Party Wear
+      </button>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
+    <span class="text-xs uppercase tracking-widest">Scroll</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+    </svg>
+  </div>
+</section>
+
+<!-- more sections will go below this -->
+<!-- ============ FEATURED CATEGORIES ============ -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+  <div class="text-center mb-16 reveal">
+    <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-black/60 mb-3">Shop by Category</p>
+    <h2 class="font-display text-3xl md:text-5xl font-bold">Find Your Look</h2>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+
+    <!-- Category Card 1 -->
+    <a href="#" class="group relative overflow-hidden rounded-2xl aspect-[3/4] reveal">
+      <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80"
+           alt="Party Dresses"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-5 text-white">
+        <h3 class="font-display text-lg md:text-xl font-semibold">Party Dresses</h3>
+        <p class="text-xs uppercase tracking-widest mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Shop Now →</p>
+      </div>
+    </a>
+
+    <!-- Category Card 2 -->
+    <a href="#" class="group relative overflow-hidden rounded-2xl aspect-[3/4] reveal" style="transition-delay:0.1s;">
+      <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=600&q=80"
+           alt="Korean Streetwear"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-5 text-white">
+        <h3 class="font-display text-lg md:text-xl font-semibold">Streetwear</h3>
+        <p class="text-xs uppercase tracking-widest mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Shop Now →</p>
+      </div>
+    </a>
+
+    <!-- Category Card 3 -->
+    <a href="#" class="group relative overflow-hidden rounded-2xl aspect-[3/4] reveal" style="transition-delay:0.2s;">
+      <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=600&q=80"
+           alt="K-pop Inspired Outfits"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-5 text-white">
+        <h3 class="font-display text-lg md:text-xl font-semibold">K-pop Edit</h3>
+        <p class="text-xs uppercase tracking-widest mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Shop Now →</p>
+      </div>
+    </a>
+
+    <!-- Category Card 4 -->
+    <a href="#" class="group relative overflow-hidden rounded-2xl aspect-[3/4] reveal" style="transition-delay:0.3s;">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80"
+           alt="Accessories"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-5 text-white">
+        <h3 class="font-display text-lg md:text-xl font-semibold">Accessories</h3>
+        <p class="text-xs uppercase tracking-widest mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Shop Now →</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+<!-- ============ NEW ARRIVALS ============ -->
+<section class="py-24 px-6 max-w-7xl mx-auto bg-[#faf7f2]">
+  <div class="flex flex-col md:flex-row items-center md:items-end justify-between mb-14 gap-4 reveal">
+    <div class="text-center md:text-left">
+      <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-black/60 mb-3">Just Dropped</p>
+      <h2 class="font-display text-3xl md:text-5xl font-bold">New Arrivals</h2>
+    </div>
+    <a href="#" class="text-sm uppercase tracking-widest border-b border-black pb-1 hover:opacity-60 transition">
+      View All →
+    </a>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+
+    <!-- Product Card 1 -->
+    <div class="group reveal">
+      <div class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4">
+        <span class="absolute top-3 left-3 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">New</span>
+        <button aria-label="Add to Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+          </svg>
+        </button>
+        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&q=80"
+             alt="Blush Satin Slip Dress"
+             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          Quick Add
+        </button>
+      </div>
+      <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(24)</span></div>
+      <h3 class="text-sm md:text-base font-medium">Blush Satin Slip Dress</h3>
+      <p class="text-sm mt-1">
+        <span class="font-semibold">₹2,499</span>
+        <span class="text-black/40 line-through ml-2">₹3,299</span>
+      </p>
+    </div>
+
+    <!-- Product Card 2 -->
+    <div class="group reveal" style="transition-delay:0.1s;">
+      <div class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4">
+        <span class="absolute top-3 left-3 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">New</span>
+        <button aria-label="Add to Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+          </svg>
+        </button>
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500&q=80"
+             alt="Lavender Corset Top"
+             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          Quick Add
+        </button>
+      </div>
+      <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(18)</span></div>
+      <h3 class="text-sm md:text-base font-medium">Lavender Corset Top</h3>
+      <p class="text-sm mt-1">
+        <span class="font-semibold">₹1,899</span>
+      </p>
+    </div>
+
+    <!-- Product Card 3 -->
+    <div class="group reveal" style="transition-delay:0.2s;">
+      <div class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4">
+        <span class="absolute top-3 left-3 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">New</span>
+        <button aria-label="Add to Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+          </svg>
+        </button>
+        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500&q=80"
+             alt="Silver Sequin Mini Dress"
+             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          Quick Add
+        </button>
+      </div>
+      <div class="flex text-[#f5c518] text-xs mb-1">★★★★☆ <span class="text-black/50 ml-1">(31)</span></div>
+      <h3 class="text-sm md:text-base font-medium">Silver Sequin Mini Dress</h3>
+      <p class="text-sm mt-1">
+        <span class="font-semibold">₹3,199</span>
+        <span class="text-black/40 line-through ml-2">₹4,199</span>
+      </p>
+    </div>
+
+    <!-- Product Card 4 -->
+    <div class="group reveal" style="transition-delay:0.3s;">
+      <div class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4">
+        <span class="absolute top-3 left-3 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">New</span>
+        <button aria-label="Add to Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+          </svg>
+        </button>
+        <img src="https://images.unsplash.com/photo-1551803091-e20673f15770?w=500&q=80"
+             alt="Beige Wrap Party Dress"
+             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          Quick Add
+        </button>
+      </div>
+      <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(12)</span></div>
+      <h3 class="text-sm md:text-base font-medium">Beige Wrap Party Dress</h3>
+      <p class="text-sm mt-1">
+        <span class="font-semibold">₹2,799</span>
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- ============ FLASH SALE ============ -->
+<section class="py-24 px-6 bg-black text-white relative overflow-hidden">
+
+  <!-- decorative glow -->
+  <div class="absolute top-0 left-1/4 w-64 h-64 bg-[#f5d6dd]/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-[#d9d3f0]/20 rounded-full blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+
+    <div class="text-center mb-12 reveal">
+      <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-white/60 mb-3">Limited Time Only</p>
+      <h2 class="font-display text-3xl md:text-5xl font-bold mb-8">⚡ Flash Sale</h2>
+
+      <!-- Countdown -->
+      <div class="flex items-center justify-center gap-3 md:gap-6">
+        <div class="flex flex-col items-center bg-white/10 backdrop-blur rounded-xl px-4 py-3 md:px-6 md:py-4 min-w-[70px]">
+          <span id="days" class="text-2xl md:text-4xl font-bold font-display">00</span>
+          <span class="text-[10px] md:text-xs uppercase tracking-widest text-white/60 mt-1">Days</span>
+        </div>
+        <span class="text-2xl font-light text-white/40">:</span>
+        <div class="flex flex-col items-center bg-white/10 backdrop-blur rounded-xl px-4 py-3 md:px-6 md:py-4 min-w-[70px]">
+          <span id="hours" class="text-2xl md:text-4xl font-bold font-display">00</span>
+          <span class="text-[10px] md:text-xs uppercase tracking-widest text-white/60 mt-1">Hours</span>
+        </div>
+        <span class="text-2xl font-light text-white/40">:</span>
+        <div class="flex flex-col items-center bg-white/10 backdrop-blur rounded-xl px-4 py-3 md:px-6 md:py-4 min-w-[70px]">
+          <span id="minutes" class="text-2xl md:text-4xl font-bold font-display">00</span>
+          <span class="text-[10px] md:text-xs uppercase tracking-widest text-white/60 mt-1">Mins</span>
+        </div>
+        <span class="text-2xl font-light text-white/40">:</span>
+        <div class="flex flex-col items-center bg-white/10 backdrop-blur rounded-xl px-4 py-3 md:px-6 md:py-4 min-w-[70px]">
+          <span id="seconds" class="text-2xl md:text-4xl font-bold font-display">00</span>
+          <span class="text-[10px] md:text-xs uppercase tracking-widest text-white/60 mt-1">Secs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sale products row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+
+      <div class="group reveal">
+        <div class="relative overflow-hidden rounded-2xl bg-white/5 aspect-[3/4] mb-4">
+          <span class="absolute top-3 left-3 z-10 bg-[#f5d6dd] text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">-40%</span>
+          <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&q=80"
+               alt="Rosé Ruffle Party Dress"
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <h3 class="text-sm md:text-base font-medium">Rosé Ruffle Party Dress</h3>
+        <p class="text-sm mt-1">
+          <span class="font-semibold text-white">₹1,799</span>
+          <span class="text-white/40 line-through ml-2">₹2,999</span>
+        </p>
+      </div>
+
+      <div class="group reveal" style="transition-delay:0.1s;">
+        <div class="relative overflow-hidden rounded-2xl bg-white/5 aspect-[3/4] mb-4">
+          <span class="absolute top-3 left-3 z-10 bg-[#f5d6dd] text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">-30%</span>
+          <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500&q=80"
+               alt="Metallic Halter Dress"
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <h3 class="text-sm md:text-base font-medium">Metallic Halter Dress</h3>
+        <p class="text-sm mt-1">
+          <span class="font-semibold text-white">₹2,449</span>
+          <span class="text-white/40 line-through ml-2">₹3,499</span>
+        </p>
+      </div>
+
+      <div class="group reveal" style="transition-delay:0.2s;">
+        <div class="relative overflow-hidden rounded-2xl bg-white/5 aspect-[3/4] mb-4">
+          <span class="absolute top-3 left-3 z-10 bg-[#f5d6dd] text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">-25%</span>
+          <img src="https://images.unsplash.com/photo-1571908599407-cdb918ed83bf?w=500&q=80"
+               alt="Pearl Trim Blazer Dress"
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <h3 class="text-sm md:text-base font-medium">Pearl Trim Blazer Dress</h3>
+        <p class="text-sm mt-1">
+          <span class="font-semibold text-white">₹3,299</span>
+          <span class="text-white/40 line-through ml-2">₹4,399</span>
+        </p>
+      </div>
+
+      <div class="group reveal" style="transition-delay:0.3s;">
+        <div class="relative overflow-hidden rounded-2xl bg-white/5 aspect-[3/4] mb-4">
+          <span class="absolute top-3 left-3 z-10 bg-[#f5d6dd] text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">-35%</span>
+          <img src="https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?w=500&q=80"
+               alt="Onyx Slit Gown"
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        </div>
+        <h3 class="text-sm md:text-base font-medium">Onyx Slit Gown</h3>
+        <p class="text-sm mt-1">
+          <span class="font-semibold text-white">₹2,899</span>
+          <span class="text-white/40 line-through ml-2">₹4,499</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ============ TESTIMONIALS ============ -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+  <div class="text-center mb-16 reveal">
+    <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-black/60 mb-3">Loved By Our Community</p>
+    <h2 class="font-display text-3xl md:text-5xl font-bold">What They're Saying</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+    <!-- Testimonial 1 -->
+    <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-500 reveal">
+      <div class="flex text-[#f5c518] text-sm mb-4">★★★★★</div>
+      <p class="text-black/70 text-sm md:text-base leading-relaxed mb-6">
+        "The quality is unreal for the price. My party dress looked exactly like the photos and fit perfectly. Definitely ordering again for my next event."
+      </p>
+      <div class="flex items-center gap-3">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Aanya R." class="w-11 h-11 rounded-full object-cover">
+        <div>
+          <p class="font-medium text-sm">Aanya R.</p>
+          <p class="text-xs text-black/50">Verified Buyer</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-500 reveal" style="transition-delay:0.1s;">
+      <div class="flex text-[#f5c518] text-sm mb-4">★★★★★</div>
+      <p class="text-black/70 text-sm md:text-base leading-relaxed mb-6">
+        "Obsessed with the K-pop inspired collection! Fast shipping, premium packaging, and the fabric feels so luxurious. KWĒN is my go-to now."
+      </p>
+      <div class="flex items-center gap-3">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Meera K." class="w-11 h-11 rounded-full object-cover">
+        <div>
+          <p class="font-medium text-sm">Meera K.</p>
+          <p class="text-xs text-black/50">Verified Buyer</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-500 reveal" style="transition-delay:0.2s;">
+      <div class="flex text-[#f5c518] text-sm mb-4">★★★★☆</div>
+      <p class="text-black/70 text-sm md:text-base leading-relaxed mb-6">
+        "Beautiful minimal aesthetic, true to Korean fashion vibes. Sizing chart was accurate too, which I really appreciated as a first time buyer."
+      </p>
+      <div class="flex items-center gap-3">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=80" alt="Priya S." class="w-11 h-11 rounded-full object-cover">
+        <div>
+          <p class="font-medium text-sm">Priya S.</p>
+          <p class="text-xs text-black/50">Verified Buyer</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM FEED ============ -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+  <div class="text-center mb-14 reveal">
+    <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-black/60 mb-3">Follow The Style</p>
+    <h2 class="font-display text-3xl md:text-5xl font-bold">@kwen.official</h2>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+
+    <a href="#" class="group relative overflow-hidden rounded-xl aspect-square reveal">
+      <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80" alt="Instagram post" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+        <svg class="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+      </div>
+    </a>
+    <a href="#" class="group relative overflow-hidden rounded-xl aspect-square reveal" style="transition-delay:0.05s;">
+      <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&q=80" alt="Instagram post" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors"></div>
+    </a>
+    <a href="#" class="group relative overflow-hidden rounded-xl aspect-square reveal" style="transition-delay:0.1s;">
+      <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=400&q=80" alt="Instagram post" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors"></div>
+    </a>
+    <a href="#" class="group relative overflow-hidden rounded-xl aspect-square reveal" style="transition-delay:0.15s;">
+      <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&q=80" alt="Instagram post" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors"></div>
+    </a>
+    <a href="#" class="group relative overflow-hidden rounded-xl aspect-square reveal hidden md:block" style="transition-delay:0.2s;">
+      <img src="https://images.unsplash.com/photo-1551803091-e20673f15770?w=400&q=80" alt="Instagram post" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors"></div>
+    </a>
+    <a href="#" class="group relative overflow-hidden rounded-xl aspect-square reveal hidden md:block" style="transition-delay:0.25s;">
+      <img src="https://images.unsplash.com/photo-1571908599407-cdb918ed83bf?w=400&q=80" alt="Instagram post" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors"></div>
+    </a>
+
+  </div>
+</section>
+<!-- ============ NEWSLETTER ============ -->
+<section class="py-24 px-6 bg-gradient-to-br from-[#f5d6dd]/40 via-[#faf7f2] to-[#d9d3f0]/40">
+  <div class="max-w-3xl mx-auto text-center reveal">
+    <p class="uppercase tracking-[0.3em] text-xs md:text-sm text-black/60 mb-3">Stay In The Loop</p>
+    <h2 class="font-display text-3xl md:text-5xl font-bold mb-4">Join the KWĒN Circle</h2>
+    <p class="text-black/60 text-sm md:text-base mb-10 max-w-md mx-auto">
+      Get early access to new drops, exclusive party wear edits, and members-only discounts.
+    </p>
+
+    <form id="newsletterForm" class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+      <input
+        type="email"
+        id="newsletterEmail"
+        required
+        placeholder="Enter your email"
+        class="w-full px-6 py-3 rounded-full border border-black/20 bg-white focus:outline-none focus:border-black transition-colors text-sm"
+      >
+      <button
+        type="submit"
+        class="w-full sm:w-auto whitespace-nowrap px-8 py-3 bg-black text-white rounded-full uppercase text-sm tracking-widest hover:bg-black/80 transition-all hover:scale-105"
+      >
+        Subscribe
+      </button>
+    </form>
+    <p id="newsletterMsg" class="text-sm mt-4 opacity-0 transition-opacity duration-500"></p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-black text-white pt-20 pb-8 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-10 md:gap-8 mb-16">
+
+    <!-- Brand col -->
+    <div class="col-span-2 md:col-span-1">
+      <h3 class="font-display text-2xl font-bold tracking-widest mb-4">KWĒN</h3>
+      <p class="text-white/60 text-sm leading-relaxed mb-6">
+        Premium Korean party wear for the woman who dresses like every night is a moment.
+      </p>
+      <div class="flex gap-4">
+        <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/><path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8z"/><circle cx="18.406" cy="5.594" r="1.44"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.58.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+        <a href="#" aria-label="Pinterest" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.11.225.081.345l-.33 1.394c-.052.213-.174.264-.402.156-1.457-.674-2.363-2.789-2.363-4.487 0-3.653 2.657-7.008 7.657-7.008 4.019 0 7.144 2.867 7.144 6.696 0 3.993-2.518 7.205-6.014 7.205-1.174 0-2.278-.61-2.656-1.331l-.723 2.756c-.262 1.007-.968 2.269-1.441 3.038 1.086.336 2.238.516 3.437.516 6.62 0 11.987-5.367 11.987-11.987C24.004 5.367 18.637.001 12.017.001z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Shop col -->
+    <div>
+      <h4 class="uppercase text-xs tracking-widest text-white/50 mb-5">Shop</h4>
+      <ul class="space-y-3 text-sm text-white/80">
+        <li><a href="#" class="hover:text-white transition">New Arrivals</a></li>
+        <li><a href="#" class="hover:text-white transition">Best Sellers</a></li>
+        <li><a href="#" class="hover:text-white transition">Party Wear</a></li>
+        <li><a href="#" class="hover:text-white transition">Sale</a></li>
+        <li><a href="#" class="hover:text-white transition">All Categories</a></li>
+      </ul>
+    </div>
+
+    <!-- Help col -->
+    <div>
+      <h4 class="uppercase text-xs tracking-widest text-white/50 mb-5">Help</h4>
+      <ul class="space-y-3 text-sm text-white/80">
+        <li><a href="#" class="hover:text-white transition">Track Order</a></li>
+        <li><a href="#" class="hover:text-white transition">Returns</a></li>
+        <li><a href="#" class="hover:text-white transition">Shipping Policy</a></li>
+        <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+        <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Company col -->
+    <div>
+      <h4 class="uppercase text-xs tracking-widest text-white/50 mb-5">Company</h4>
+      <ul class="space-y-3 text-sm text-white/80">
+        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+        <li><a href="#" class="hover:text-white transition">Refund Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Payment col -->
+    <div>
+      <h4 class="uppercase text-xs tracking-widest text-white/50 mb-5">We Accept</h4>
+      <div class="flex flex-wrap gap-2">
+        <span class="bg-white/10 rounded px-3 py-2 text-xs">Visa</span>
+        <span class="bg-white/10 rounded px-3 py-2 text-xs">Mastercard</span>
+        <span class="bg-white/10 rounded px-3 py-2 text-xs">UPI</span>
+        <span class="bg-white/10 rounded px-3 py-2 text-xs">Razorpay</span>
+        <span class="bg-white/10 rounded px-3 py-2 text-xs">COD</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="max-w-7xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-3">
+    <p class="text-xs text-white/50">© 2026 KWĒN. All rights reserved.</p>
+    <p class="text-xs text-white/50">Made with 🖤 for Korean fashion lovers</p>
+  </div>
+</footer>
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  // Scroll reveal (for later sections)
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('active');
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+  // Flash Sale Countdown
+  const saleEndDate = new Date();
+  saleEndDate.setDate(saleEndDate.getDate() + 2); // sale ends 2 days from now (adjust as needed)
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = saleEndDate.getTime() - now;
+
+    if (distance < 0) {
+      document.getElementById('days').textContent = '00';
+      document.getElementById('hours').textContent = '00';
+      document.getElementById('minutes').textContent = '00';
+      document.getElementById('seconds').textContent = '00';
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  // Newsletter form
+  const newsletterForm = document.getElementById('newsletterForm');
+  const newsletterMsg = document.getElementById('newsletterMsg');
+
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value;
+    newsletterMsg.textContent = `Thanks! ${email} has been subscribed 🎉`;
+    newsletterMsg.classList.remove('opacity-0');
+    newsletterMsg.classList.add('opacity-100', 'text-black');
+    newsletterForm.reset();
+  });
+</script>
+
+</body>
+</html>

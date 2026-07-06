@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Your Order | KWĒN</title>
+<meta name="description" content="Track your KWĒN order status and delivery updates.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  body { overflow-x: hidden; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeUp { animation: fadeUp 0.6s ease forwards; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+
+  /* Tracking timeline */
+  .timeline-dot {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: #00000020;
+    position: relative;
+    z-index: 10;
+  }
+  .timeline-dot.completed {
+    background: #000;
+  }
+  .timeline-dot.completed::after {
+    content: '✓';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 9px;
+  }
+  .timeline-dot.current {
+    background: #000;
+    animation: pulseDot 1.5s ease-in-out infinite;
+  }
+  @keyframes pulseDot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0.3); }
+    50% { box-shadow: 0 0 0 8px rgba(0,0,0,0); }
+  }
+  .timeline-line {
+    width: 2px;
+    background: #00000015;
+    flex: 1;
+  }
+  .timeline-line.completed {
+    background: #000;
+  }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- ============ MINIMAL NAVBAR ============ -->
+<nav class="w-full bg-[#faf7f2]/95 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display text-2xl font-bold tracking-widest">KWĒN</a>
+    <a href="dashboard.html" class="text-sm hover:opacity-60 transition">My Account</a>
+  </div>
+</nav>
+
+<!-- ============ TRACK ORDER SEARCH ============ -->
+<section class="pt-16 pb-10 px-6 max-w-3xl mx-auto text-center">
+  <p class="uppercase tracking-[0.3em] text-xs text-black/50 mb-3 animate-fadeUp">Order Tracking</p>
+  <h1 class="font-display text-3xl md:text-4xl font-bold mb-8 animate-fadeUp">Track Your Order</h1>
+
+  <div class="bg-white rounded-2xl p-6 flex flex-col sm:flex-row gap-3 animate-fadeUp" style="animation-delay:0.1s;">
+    <input type="text" id="orderIdInput" value="KWEN-79104" placeholder="Enter Order ID (e.g. KWEN-79104)" class="flex-1 px-5 py-3 rounded-full border border-black/20 text-sm focus:outline-none focus:border-black transition-colors">
+    <button id="trackBtn" class="bg-black text-white rounded-full px-8 py-3 uppercase text-sm tracking-widest hover:bg-black/80 transition-all hover:scale-[1.02]">
+      Track
+    </button>
+  </div>
+</section>
+
+<!-- ============ ORDER STATUS RESULT ============ -->
+<section class="px-6 max-w-3xl mx-auto pb-24">
+  <div class="bg-white rounded-2xl p-6 md:p-8 reveal" id="trackResult">
+
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 pb-6 border-b border-black/10">
+      <div>
+        <p class="text-xs text-black/50">Order Number</p>
+        <p class="font-semibold">#KWEN-79104</p>
+      </div>
+      <div>
+        <p class="text-xs text-black/50">Placed On</p>
+        <p class="font-semibold">June 28, 2026</p>
+      </div>
+      <div>
+        <span class="bg-blue-100 text-blue-700 text-xs px-3 py-1.5 rounded-full font-medium">In Transit</span>
+      </div>
+    </div>
+
+    <!-- Product being tracked -->
+    <div class="flex items-center gap-4 mb-8">
+      <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=200&q=80" alt="Rosé Ruffle Party Dress" class="w-16 h-20 object-cover rounded-lg">
+      <div>
+        <p class="text-sm font-medium">Rosé Ruffle Party Dress</p>
+        <p class="text-xs text-black/50">Size M · Qty 1</p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="space-y-0">
+
+      <div class="flex gap-4">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot completed"></div>
+          <div class="timeline-line completed" style="min-height:50px;"></div>
+        </div>
+        <div class="pb-8">
+          <p class="text-sm font-medium">Order Confirmed</p>
+          <p class="text-xs text-black/50 mt-1">Jun 28, 2026 · 11:42 AM</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot completed"></div>
+          <div class="timeline-line completed" style="min-height:50px;"></div>
+        </div>
+        <div class="pb-8">
+          <p class="text-sm font-medium">Order Packed</p>
+          <p class="text-xs text-black/50 mt-1">Jun 29, 2026 · 3:15 PM</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot current"></div>
+          <div class="timeline-line" style="min-height:50px;"></div>
+        </div>
+        <div class="pb-8">
+          <p class="text-sm font-medium">Shipped — In Transit</p>
+          <p class="text-xs text-black/50 mt-1">Jul 5, 2026 · Currently in Mumbai Hub</p>
+          <p class="text-xs text-black/40 mt-1">Tracking ID: SR8842910392 (Shiprocket)</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot"></div>
+        </div>
+        <div>
+          <p class="text-sm font-medium text-black/40">Out for Delivery</p>
+          <p class="text-xs text-black/40 mt-1">Expected Jul 8, 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-black/10 flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 border border-black rounded-full py-3 uppercase text-xs tracking-widest hover:bg-black hover:text-white transition">
+        Need Help?
+      </button>
+      <button class="flex-1 border border-black rounded-full py-3 uppercase text-xs tracking-widest hover:bg-black hover:text-white transition">
+        Download Invoice
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Track button (demo — just re-triggers reveal animation)
+  document.getElementById('trackBtn').addEventListener('click', () => {
+    const result = document.getElementById('trackResult');
+    result.classList.remove('active');
+    void result.offsetWidth; // force reflow to restart animation
+    setTimeout(() => result.classList.add('active'), 50);
+  });
+</script>
+
+</body>
+</html>

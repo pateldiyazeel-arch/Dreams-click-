@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | KWĒN</title>
+<meta name="description" content="Discover the story behind KWĒN - premium Korean party wear crafted for the modern woman.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  body { overflow-x: hidden; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeUp { animation: fadeUp 0.7s ease forwards; }
+  .delay-1 { animation-delay: 0.15s; opacity: 0; animation-fill-mode: forwards; }
+  .delay-2 { animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-16px); }
+  }
+  .animate-float { animation: float 5s ease-in-out infinite; }
+
+  @keyframes countUp {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+
+  #mobileMenu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+  #mobileMenu.open { transform: translateX(0); }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; width: 0; height: 1px;
+    bottom: -4px; left: 0; background-color: #000;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  .value-card { transition: transform 0.3s ease; }
+  .value-card:hover { transform: translateY(-6px); }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#faf7f2]/90 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display text-2xl md:text-3xl font-bold tracking-widest">KWĒN</a>
+    <div class="hidden lg:flex items-center gap-8 text-sm uppercase tracking-wide">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="about.html" class="nav-link font-semibold">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="flex items-center gap-5">
+      <button aria-label="Cart" class="relative hover:opacity-60 transition">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.980-4.804 2.558-7.436a1.125 1.125 0 00-1.087-1.564H5.106M7.5 14.25L5.106 5.272M7.5 14.25L5.106 5.272" /></svg>
+        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+      </button>
+      <button id="menuBtn" aria-label="Menu" class="lg:hidden">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#faf7f2] z-50 shadow-2xl lg:hidden">
+  <div class="flex justify-end p-6">
+    <button id="closeMenuBtn">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="flex flex-col gap-6 px-8 text-lg uppercase tracking-wide">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="pt-32 pb-16 px-6 max-w-4xl mx-auto text-center">
+  <p class="uppercase tracking-[0.3em] text-xs text-black/50 mb-4 animate-fadeUp">Our Story</p>
+  <h1 class="font-display text-4xl md:text-6xl font-bold leading-tight animate-fadeUp delay-1">
+    Where Seoul Style<br>Meets Every Moment
+  </h1>
+  <p class="text-black/60 text-base md:text-lg mt-6 max-w-2xl mx-auto animate-fadeUp delay-2">
+    KWĒN was born from a love of Korean fashion's fearless elegance — where minimal silhouettes meet maximal confidence, made for the woman who dresses for the night ahead.
+  </p>
+</section>
+
+<!-- ============ IMAGE BANNER ============ -->
+<section class="px-6 max-w-7xl mx-auto pb-20 reveal">
+  <div class="grid grid-cols-3 gap-4 rounded-3xl overflow-hidden h-64 md:h-96">
+    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&q=80" alt="KWĒN fashion" class="w-full h-full object-cover">
+    <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=500&q=80" alt="KWĒN fashion" class="w-full h-full object-cover hidden sm:block">
+    <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=500&q=80" alt="KWĒN fashion" class="w-full h-full object-cover">
+  </div>
+</section>
+
+<!-- ============ OUR STORY TEXT ============ -->
+<section class="px-6 max-w-5xl mx-auto pb-20">
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <p class="text-xs uppercase tracking-widest text-black/50 mb-3">Founded in 2023</p>
+      <h2 class="font-display text-2xl md:text-3xl font-bold mb-5">Designed in Seoul, Loved Everywhere</h2>
+      <p class="text-black/70 text-sm leading-relaxed mb-4">
+        KWĒN started with a simple frustration: finding party wear that felt as premium as it looked, without the impossible price tag. We set out to bring the precision tailoring and refined color palettes of Korean fashion houses to women everywhere.
+      </p>
+      <p class="text-black/70 text-sm leading-relaxed">
+        Every KWĒN piece is designed by our in-house team in Seoul, and crafted using premium fabrics — because we believe your outfit should feel as good as it makes you feel.
+      </p>
+    </div>
+    <div class="reveal" style="transition-delay:0.1s;">
+      <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80" alt="KWĒN design process" class="rounded-2xl w-full h-full object-cover aspect-square">
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="bg-black text-white py-16 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div class="reveal">
+      <p class="font-display text-4xl md:text-5xl font-bold mb-2">50K+</p>
+      <p class="text-xs uppercase tracking-widest text-white/60">Happy Customers</p>
+    </div>
+    <div class="reveal" style="transition-delay:0.1s;">
+      <p class="font-display text-4xl md:text-5xl font-bold mb-2">300+</p>
+      <p class="text-xs uppercase tracking-widest text-white/60">Curated Styles</p>
+    </div>
+    <div class="reveal" style="transition-delay:0.2s;">
+      <p class="font-display text-4xl md:text-5xl font-bold mb-2">4.8★</p>
+      <p class="text-xs uppercase tracking-widest text-white/60">Average Rating</p>
+    </div>
+    <div class="reveal" style="transition-delay:0.3s;">
+      <p class="font-display text-4xl md:text-5xl font-bold mb-2">15+</p>
+      <p class="text-xs uppercase tracking-widest text-white/60">Cities Served</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR VALUES ============ -->
+<section class="px-6 max-w-7xl mx-auto py-20">
+  <div class="text-center mb-14 reveal">
+    <p class="uppercase tracking-[0.3em] text-xs text-black/50 mb-3">What We Stand For</p>
+    <h2 class="font-display text-3xl md:text-4xl font-bold">Our Values</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="value-card bg-white rounded-2xl p-8 text-center reveal">
+      <div class="w-14 h-14 bg-[#f5d6dd]/50 rounded-full flex items-center justify-center mx-auto mb-5">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold mb-2">Premium Craftsmanship</h3>
+      <p class="text-sm text-black/60 leading-relaxed">Every piece is made with meticulous attention to fabric, fit, and finish — never mass-produced fast fashion.</p>
+    </div>
+
+    <div class="value-card bg-white rounded-2xl p-8 text-center reveal" style="transition-delay:0.1s;">
+      <div class="w-14 h-14 bg-[#d9d3f0]/50 rounded-full flex items-center justify-center mx-auto mb-5">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" /></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold mb-2">Confident Femininity</h3>
+      <p class="text-sm text-black/60 leading-relaxed">Our designs celebrate bold self-expression, blending minimalism with statement details for every occasion.</p>
+    </div>
+
+    <div class="value-card bg-white rounded-2xl p-8 text-center reveal" style="transition-delay:0.2s;">
+      <div class="w-14 h-14 bg-[#f1e8dd] rounded-full flex items-center justify-center mx-auto mb-5">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m-15.432 0A8.959 8.959 0 013 12c0-.778.099-1.533.284-2.253" /></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold mb-2">Sustainable Growth</h3>
+      <p class="text-sm text-black/60 leading-relaxed">We produce in small, thoughtful batches to reduce waste and keep our collections genuinely special.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="px-6 pb-20">
+  <div class="max-w-4xl mx-auto bg-gradient-to-br from-[#f5d6dd]/40 via-[#faf7f2] to-[#d9d3f0]/40 rounded-3xl p-12 text-center relative overflow-hidden reveal">
+    <div class="absolute top-6 left-10 w-16 h-16 rounded-full bg-white/40 blur-lg animate-float"></div>
+    <h2 class="font-display text-2xl md:text-3xl font-bold mb-4 relative z-10">Ready to Find Your Look?</h2>
+    <p class="text-black/60 text-sm mb-8 max-w-md mx-auto relative z-10">Explore our latest party wear collection and step into your next moment in style.</p>
+    <a href="shop.html" class="inline-block bg-black text-white rounded-full px-10 py-3.5 uppercase text-sm tracking-widest hover:bg-black/80 transition-all hover:scale-105 relative z-10">
+      Shop the Collection
+    </a>
+  </div>
+</section>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

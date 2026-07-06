@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | KWĒN</title>
+<meta name="description" content="Secure checkout at KWĒN - premium Korean party wear.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  body { overflow-x: hidden; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeUp { animation: fadeUp 0.5s ease forwards; }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+
+  /* Step indicator */
+  .step-circle {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    border: 1.5px solid #00000030;
+    transition: all 0.3s ease;
+  }
+  .step-circle.active {
+    background: #000; color: #fff; border-color: #000;
+  }
+  .step-circle.completed {
+    background: #000; color: #fff; border-color: #000;
+  }
+  .step-line {
+    flex: 1; height: 1.5px; background: #00000020;
+    transition: background 0.4s ease;
+  }
+  .step-line.completed { background: #000; }
+  .step-label { transition: color 0.3s ease; }
+  .step-label.active { color: #000; font-weight: 600; }
+
+  /* Step panels */
+  .checkout-step { display: none; }
+  .checkout-step.active { display: block; animation: fadeUp 0.5s ease; }
+
+  /* Custom radio */
+  .payment-option {
+    transition: all 0.2s ease;
+  }
+  .payment-option.selected {
+    border-color: #000 !important;
+    background: #00000005;
+  }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- ============ MINIMAL NAVBAR (checkout focus) ============ -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#faf7f2]/95 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display text-2xl font-bold tracking-widest">KWĒN</a>
+    <a href="cart.html" class="text-sm flex items-center gap-2 hover:opacity-60 transition">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+      Back to Cart
+    </a>
+  </div>
+</nav>
+
+<!-- ============ STEP INDICATOR ============ -->
+<section class="pt-28 pb-6 px-6 max-w-5xl mx-auto">
+  <div class="flex items-center">
+    <div class="flex flex-col items-center">
+      <div class="step-circle active" id="circle-1">1</div>
+      <span class="step-label active text-xs mt-2 hidden sm:block" id="label-1">Address</span>
+    </div>
+    <div class="step-line" id="line-1"></div>
+    <div class="flex flex-col items-center">
+      <div class="step-circle" id="circle-2">2</div>
+      <span class="step-label text-xs mt-2 hidden sm:block" id="label-2">Shipping</span>
+    </div>
+    <div class="step-line" id="line-2"></div>
+    <div class="flex flex-col items-center">
+      <div class="step-circle" id="circle-3">3</div>
+      <span class="step-label text-xs mt-2 hidden sm:block" id="label-3">Payment</span>
+    </div>
+    <div class="step-line" id="line-3"></div>
+    <div class="flex flex-col items-center">
+      <div class="step-circle" id="circle-4">4</div>
+      <span class="step-label text-xs mt-2 hidden sm:block" id="label-4">Review</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHECKOUT LAYOUT ============ -->
+<section class="px-6 max-w-5xl mx-auto pb-24">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+    <!-- Main Form Area -->
+    <div class="lg:col-span-2">
+
+      <!-- STEP 1: ADDRESS -->
+      <div class="checkout-step active" id="step-1">
+        <div class="bg-white rounded-2xl p-6 md:p-8">
+          <h2 class="font-display text-xl font-semibold mb-6">Shipping Address</h2>
+
+          <div class="grid md:grid-cols-2 gap-4 mb-4">
+            <input type="text" placeholder="Full Name" class="px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors">
+            <input type="tel" placeholder="Phone Number" class="px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors">
+          </div>
+
+          <input type="text" placeholder="Address Line 1" class="w-full px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors mb-4">
+          <input type="text" placeholder="Address Line 2 (Optional)" class="w-full px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors mb-4">
+
+          <div class="grid md:grid-cols-3 gap-4 mb-4">
+            <input type="text" placeholder="City" class="px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors">
+            <select class="px-4 py-3 rounded-xl border border-black/20 text-sm bg-white focus:outline-none focus:border-black transition-colors">
+              <option>State</option>
+              <option>Maharashtra</option>
+              <option>Delhi</option>
+              <option>Karnataka</option>
+              <option>Tamil Nadu</option>
+              <option>West Bengal</option>
+            </select>
+            <input type="text" placeholder="Pincode" class="px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors">
+          </div>
+
+          <label class="flex items-center gap-3 mb-6 text-sm cursor-pointer">
+            <input type="checkbox" class="w-4 h-4">
+            Save this address for future orders
+          </label>
+
+          <button class="next-step-btn w-full sm:w-auto bg-black text-white rounded-full px-10 py-3.5 uppercase text-sm tracking-widest hover:bg-black/80 transition-all hover:scale-[1.02]" data-next="2">
+            Continue to Shipping
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2, 3, 4 placeholders — added in next parts -->
+      <!-- STEP 2: SHIPPING -->
+<div class="checkout-step" id="step-2">
+  <div class="bg-white rounded-2xl p-6 md:p-8">
+    <h2 class="font-display text-xl font-semibold mb-6">Choose Shipping Method</h2>
+
+    <div class="space-y-4 mb-6">
+      <label class="payment-option selected flex items-center justify-between border border-black rounded-xl p-4 cursor-pointer" data-price="0">
+        <div class="flex items-center gap-4">
+          <input type="radio" name="shipping" checked class="w-4 h-4 accent-black">
+          <div>
+            <p class="font-medium text-sm">Standard Delivery</p>
+            <p class="text-xs text-black/50">4–6 business days</p>
+          </div>
+        </div>
+        <span class="font-semibold text-sm">Free</span>
+      </label>
+
+      <label class="payment-option flex items-center justify-between border border-black/20 rounded-xl p-4 cursor-pointer" data-price="149">
+        <div class="flex items-center gap-4">
+          <input type="radio" name="shipping" class="w-4 h-4 accent-black">
+          <div>
+            <p class="font-medium text-sm">Express Delivery</p>
+            <p class="text-xs text-black/50">1–2 business days</p>
+          </div>
+        </div>
+        <span class="font-semibold text-sm">₹149</span>
+      </label>
+
+      <label class="payment-option flex items-center justify-between border border-black/20 rounded-xl p-4 cursor-pointer" data-price="299">
+        <div class="flex items-center gap-4">
+          <input type="radio" name="shipping" class="w-4 h-4 accent-black">
+          <div>
+            <p class="font-medium text-sm">Same Day Delivery</p>
+            <p class="text-xs text-black/50">Order before 12 PM · Metro cities only</p>
+          </div>
+        </div>
+        <span class="font-semibold text-sm">₹299</span>
+      </label>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button class="prev-step-btn border border-black rounded-full px-8 py-3.5 uppercase text-sm tracking-widest hover:bg-black hover:text-white transition-all" data-prev="1">
+        Back
+      </button>
+      <button class="next-step-btn flex-1 bg-black text-white rounded-full px-10 py-3.5 uppercase text-sm tracking-widest hover:bg-black/80 transition-all hover:scale-[1.02]" data-next="3">
+        Continue to Payment
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3: PAYMENT -->
+<div class="checkout-step" id="step-3">
+  <div class="bg-white rounded-2xl p-6 md:p-8">
+    <h2 class="font-display text-xl font-semibold mb-6">Payment Method</h2>
+
+    <div class="space-y-4 mb-6">
+      <label class="payment-option selected block border border-black rounded-xl p-4 cursor-pointer">
+        <div class="flex items-center gap-4 mb-1">
+          <input type="radio" name="payment" checked class="w-4 h-4 accent-black">
+          <p class="font-medium text-sm">Credit / Debit Card</p>
+          <span class="ml-auto text-xs text-black/40">Stripe</span>
+        </div>
+      </label>
+
+      <div class="pl-9 space-y-3 pb-2" id="cardFields">
+        <input type="text" placeholder="Card Number" class="w-full px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors">
+        <div class="grid grid-cols-2 gap-3">
+          <input type="text" placeholder="MM / YY" class="px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors">
+          <input type="text" placeholder="CVV" class="px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors">
+        </div>
+      </div>
+
+      <label class="payment-option flex items-center gap-4 border border-black/20 rounded-xl p-4 cursor-pointer">
+        <input type="radio" name="payment" class="w-4 h-4 accent-black">
+        <p class="font-medium text-sm">UPI</p>
+        <span class="ml-auto text-xs text-black/40">Google Pay · PhonePe · Paytm</span>
+      </label>
+
+      <label class="payment-option flex items-center gap-4 border border-black/20 rounded-xl p-4 cursor-pointer">
+        <input type="radio" name="payment" class="w-4 h-4 accent-black">
+        <p class="font-medium text-sm">Razorpay</p>
+        <span class="ml-auto text-xs text-black/40">Cards · Wallets · Net Banking</span>
+      </label>
+
+      <label class="payment-option flex items-center gap-4 border border-black/20 rounded-xl p-4 cursor-pointer">
+        <input type="radio" name="payment" class="w-4 h-4 accent-black">
+        <p class="font-medium text-sm">Cash on Delivery</p>
+        <span class="ml-auto text-xs text-black/40">₹30 COD fee</span>
+      </label>
+    </div>
+
+    <div class="flex items-center gap-2 text-xs text-black/50 mb-6">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+      Your payment information is encrypted and secure
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button class="prev-step-btn border border-black rounded-full px-8 py-3.5 uppercase text-sm tracking-widest hover:bg-black hover:text-white transition-all" data-prev="2">
+        Back
+      </button>
+      <button class="next-step-btn flex-1 bg-black text-white rounded-full px-10 py-3.5 uppercase text-sm tracking-widest hover:bg-black/80 transition-all hover:scale-[1.02]" data-next="4">
+        Review Order
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4: REVIEW placeholder — added in next part -->
+<!-- STEP 4: REVIEW -->
+<div class="checkout-step" id="step-4">
+  <div class="bg-white rounded-2xl p-6 md:p-8">
+    <h2 class="font-display text-xl font-semibold mb-6">Review Your Order</h2>
+
+    <!-- Items -->
+    <div class="space-y-4 mb-6">
+      <div class="flex gap-4 items-center border-b border-black/10 pb-4">
+        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=200&q=80" alt="Blush Satin Slip Dress" class="w-16 h-20 object-cover rounded-lg">
+        <div class="flex-1">
+          <p class="text-sm font-medium">Blush Satin Slip Dress</p>
+          <p class="text-xs text-black/50">Qty: 1 · Size M · Blush Pink</p>
+        </div>
+        <p class="text-sm font-semibold">₹2,499</p>
+      </div>
+      <div class="flex gap-4 items-center border-b border-black/10 pb-4">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=200&q=80" alt="Lavender Corset Top" class="w-16 h-20 object-cover rounded-lg">
+        <div class="flex-1">
+          <p class="text-sm font-medium">Lavender Corset Top</p>
+          <p class="text-xs text-black/50">Qty: 1 · Size S · Lavender</p>
+        </div>
+        <p class="text-sm font-semibold">₹1,899</p>
+      </div>
+      <div class="flex gap-4 items-center">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=200&q=80" alt="Silver Chain Belt" class="w-16 h-20 object-cover rounded-lg">
+        <div class="flex-1">
+          <p class="text-sm font-medium">Silver Chain Belt</p>
+          <p class="text-xs text-black/50">Qty: 1 · One Size · Silver</p>
+        </div>
+        <p class="text-sm font-semibold">₹899</p>
+      </div>
+    </div>
+
+    <!-- Ship to -->
+    <div class="bg-[#faf7f2] rounded-xl p-4 mb-4">
+      <p class="text-xs uppercase tracking-widest text-black/50 mb-2">Shipping To</p>
+      <p class="text-sm" id="reviewAddress">Your address details will appear here after Step 1</p>
+    </div>
+
+    <div class="bg-[#faf7f2] rounded-xl p-4 mb-6">
+      <p class="text-xs uppercase tracking-widest text-black/50 mb-2">Payment Method</p>
+      <p class="text-sm" id="reviewPayment">Credit / Debit Card</p>
+    </div>
+
+    <label class="flex items-start gap-3 mb-6 text-sm cursor-pointer">
+      <input type="checkbox" id="termsCheckbox" class="w-4 h-4 mt-0.5">
+      <span>I agree to the <a href="#" class="underline">Terms & Conditions</a> and <a href="#" class="underline">Refund Policy</a></span>
+    </label>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button class="prev-step-btn border border-black rounded-full px-8 py-3.5 uppercase text-sm tracking-widest hover:bg-black hover:text-white transition-all" data-prev="3">
+        Back
+      </button>
+      <button id="placeOrderBtn" class="flex-1 bg-black text-white rounded-full px-10 py-3.5 uppercase text-sm tracking-widest hover:bg-black/80 transition-all hover:scale-[1.02]">
+        Place Order
+      </button>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <!-- Order Summary Sidebar -->
+    <!-- Order Summary Sidebar -->
+<div class="lg:col-span-1">
+  <div class="bg-white rounded-2xl p-6 sticky top-28">
+    <h3 class="font-display text-lg font-semibold mb-6">Order Summary</h3>
+    
+    <div class="space-y-3 text-sm border-b border-black/10 pb-5 mb-5">
+      <div class="flex justify-between">
+        <span class="text-black/60">Subtotal (3 items)</span>
+        <span>₹5,297</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-black/60">Shipping</span>
+        <span id="checkoutShippingValue">Free</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-black/60">Tax (GST 5%)</span>
+        <span id="checkoutTaxValue">₹265</span>
+      </div>
+    </div>
+    
+    <div class="flex justify-between items-center mb-2">
+      <span class="font-semibold">Total</span>
+      <span id="checkoutTotalValue" class="text-xl font-semibold">₹5,562</span>
+    </div>
+    <p class="text-xs text-black/50">Inclusive of all taxes</p>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<script>
+ const SUBTOTAL = 5297;
+const TAX_RATE = 0.05;
+let currentStep = 1;
+let shippingCost = 0;
+
+function goToStep(stepNum) {
+  document.querySelectorAll('.checkout-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-' + stepNum).classList.add('active');
+  
+  for (let i = 1; i <= 4; i++) {
+    const circle = document.getElementById('circle-' + i);
+    const label = document.getElementById('label-' + i);
+    const line = document.getElementById('line-' + i);
+    circle.classList.remove('active', 'completed');
+    label.classList.remove('active');
+    
+    if (i < stepNum) {
+      circle.classList.add('completed');
+      circle.textContent = '✓';
+      if (line) line.classList.add('completed');
+    } else if (i === stepNum) {
+      circle.classList.add('active');
+      circle.textContent = i;
+      label.classList.add('active');
+      if (line) line.classList.remove('completed');
+    } else {
+      circle.textContent = i;
+      if (line) line.classList.remove('completed');
+    }
+  }
+  currentStep = stepNum;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.next-step-btn').forEach(btn => {
+  btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.next)));
+});
+document.querySelectorAll('.prev-step-btn').forEach(btn => {
+  btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.prev)));
+});
+
+// Shipping option selection
+document.querySelectorAll('#step-2 .payment-option').forEach(option => {
+  option.addEventListener('click', () => {
+    document.querySelectorAll('#step-2 .payment-option').forEach(o => {
+      o.classList.remove('selected');
+      o.classList.add('border-black/20');
+      o.classList.remove('border-black');
+      o.querySelector('input').checked = false;
+    });
+    option.classList.add('selected', 'border-black');
+    option.classList.remove('border-black/20');
+    option.querySelector('input').checked = true;
+    
+    shippingCost = parseFloat(option.dataset.price);
+    updateCheckoutTotals();
+  });
+});
+
+// Payment option selection
+document.querySelectorAll('#step-3 .payment-option').forEach(option => {
+  option.addEventListener('click', () => {
+    document.querySelectorAll('#step-3 .payment-option').forEach(o => {
+      o.classList.remove('selected', 'border-black');
+      o.classList.add('border-black/20');
+      o.querySelector('input').checked = false;
+    });
+    option.classList.add('selected', 'border-black');
+    option.classList.remove('border-black/20');
+    option.querySelector('input').checked = true;
+    
+    const methodName = option.querySelector('p').textContent;
+    document.getElementById('reviewPayment').textContent = methodName;
+    
+    // Show/hide card fields
+    const cardFields = document.getElementById('cardFields');
+    cardFields.style.display = methodName.includes('Card') ? 'block' : 'none';
+  });
+});
+
+function updateCheckoutTotals() {
+  const tax = SUBTOTAL * TAX_RATE;
+  const total = SUBTOTAL + tax + shippingCost;
+  document.getElementById('checkoutShippingValue').textContent = shippingCost === 0 ? 'Free' : '₹' + shippingCost;
+  document.getElementById('checkoutTaxValue').textContent = '₹' + Math.round(tax).toLocaleString('en-IN');
+  document.getElementById('checkoutTotalValue').textContent = '₹' + Math.round(total).toLocaleString('en-IN');
+}
+
+// Populate review address from Step 1 inputs when moving to Step 4
+document.querySelector('[data-next="4"]').addEventListener('click', () => {
+  const step1Inputs = document.querySelectorAll('#step-1 input');
+  const name = step1Inputs[0].value || 'Jane Doe';
+  const addr1 = step1Inputs[2].value || '123 Gangnam Street';
+  const city = step1Inputs[4].value || 'Mumbai';
+  const pincode = step1Inputs[6] ? step1Inputs[6].value : '400001';
+  document.getElementById('reviewAddress').textContent = `${name}, ${addr1}, ${city} - ${pincode || '400001'}`;
+});
+
+// Place order
+document.getElementById('placeOrderBtn').addEventListener('click', () => {
+  const termsChecked = document.getElementById('termsCheckbox').checked;
+  if (!termsChecked) {
+    alert('Please agree to the Terms & Conditions and Refund Policy to continue.');
+    return;
+  }
+  window.location.href = 'order-success.html';
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Ways to Style K-Pop Inspired Outfits for Any Party | KWĒN Blog</title>
+<meta name="description" content="Discover how to style K-pop inspired outfits for any party occasion.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  body { overflow-x: hidden; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fadeUp { animation: fadeUp 0.6s ease forwards; }
+
+  .reveal { opacity: 0; transform: translateY(25px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+
+  #mobileMenu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+  #mobileMenu.open { transform: translateX(0); }
+
+  .nav-link { position: relative; }
+  .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: #000; transition: width 0.3s ease; }
+  .nav-link:hover::after { width: 100%; }
+
+  /* Reading progress bar */
+  #progressBar {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: #000; z-index: 60; width: 0%;
+    transition: width 0.1s ease;
+  }
+
+  .related-card { transition: transform 0.3s ease; }
+  .related-card:hover { transform: translateY(-4px); }
+
+  /* Prose styling for article body */
+  .article-body p { margin-bottom: 1.25rem; }
+  .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
+  .article-body img { border-radius: 1rem; margin: 2rem 0; }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- Reading progress bar -->
+<div id="progressBar"></div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#faf7f2]/90 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display text-2xl md:text-3xl font-bold tracking-widest">KWĒN</a>
+    <div class="hidden lg:flex items-center gap-8 text-sm uppercase tracking-wide">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="blog.html" class="nav-link font-semibold">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <button id="menuBtn" aria-label="Menu" class="lg:hidden">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+    </button>
+  </div>
+</nav>
+
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#faf7f2] z-50 shadow-2xl lg:hidden">
+  <div class="flex justify-end p-6">
+    <button id="closeMenuBtn">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="flex flex-col gap-6 px-8 text-lg uppercase tracking-wide">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- ============ ARTICLE HEADER ============ -->
+<section class="pt-32 pb-8 px-6 max-w-3xl mx-auto text-center">
+  <p class="text-xs text-black/50 mb-4 animate-fadeUp">
+    <a href="blog.html" class="hover:underline">Blog</a> / Style Guide
+  </p>
+  <p class="uppercase tracking-[0.3em] text-xs text-black/50 mb-4 animate-fadeUp">Style Guide · Jul 3, 2026 · 5 min read</p>
+  <h1 class="font-display text-3xl md:text-5xl font-bold leading-tight mb-6 animate-fadeUp">
+    5 Ways to Style K-Pop Inspired Outfits for Any Party
+  </h1>
+  <div class="flex items-center justify-center gap-3 animate-fadeUp">
+    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Author" class="w-9 h-9 rounded-full object-cover">
+    <span class="text-sm text-black/60">By the KWĒN Style Team</span>
+  </div>
+</section>
+
+<!-- ============ FEATURED IMAGE ============ -->
+<section class="px-6 max-w-5xl mx-auto pb-12 reveal">
+  <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=1200&q=80" alt="K-pop inspired outfits" class="w-full rounded-3xl aspect-video object-cover">
+</section>
+
+<!-- ============ ARTICLE CONTENT ============ -->
+<section class="px-6 max-w-3xl mx-auto pb-16">
+  <div class="article-body text-black/70 text-base leading-relaxed reveal">
+    <p>K-pop fashion has redefined what party wear means — it's no longer about choosing between minimal and bold, it's about mastering both at once. Idols on stage and off it consistently prove that confidence comes from contrast: soft fabrics paired with sharp silhouettes, delicate accessories layered over statement pieces.</p>
+
+    <p>If you've been eyeing that corset top or sequin mini in your cart but aren't sure how to wear it, here are five styling formulas straight from Seoul's street style scene.</p>
+
+    <h2>1. Layer a Blazer Over Your Slip Dress</h2>
+    <p>The oversized blazer-over-slip-dress combo is a K-pop styling staple. It instantly elevates a simple satin piece, adds structure, and works for both stage-ready glam and a night out with friends. Pick a blazer a size up for that effortlessly borrowed look.</p>
+
+    <h2>2. Mix Metallics With Matte Fabrics</h2>
+    <p>Pairing a metallic or sequin piece with something matte — like a plain satin skirt or a simple black top — keeps the shine from overwhelming your outfit. This contrast is what makes K-pop looks feel curated rather than costume-like.</p>
+
+    <h2>3. Accessorize With Chain Details</h2>
+    <p>Silver chain belts, layered necklaces, and statement earrings are non-negotiable in Korean party styling. They add movement and catch the light beautifully under club or event lighting — the perfect finishing touch to an otherwise simple base outfit.</p>
+
+    <h2>4. Play With Proportions</h2>
+    <p>Fitted corset top with a flowy skirt, or an oversized jacket with a bodycon mini — K-pop style thrives on contrasting proportions. This creates visual interest without needing bold prints or colors.</p>
+
+    <h2>5. Anchor Everything With One Statement Piece</h2>
+    <p>Whether it's a sequin mini dress or a bold color like lavender or hot pink, build your whole outfit around one hero piece and keep everything else simple. This is the golden rule behind every effortlessly chic K-pop-inspired look.</p>
+
+    <p>Ready to build your own party look? Explore our <a href="shop.html" class="underline text-black">Party Wear Collection</a> for pieces designed with exactly this styling philosophy in mind.</p>
+  </div>
+
+  <!-- Tags -->
+  <div class="flex flex-wrap gap-2 mt-8 pt-8 border-t border-black/10 reveal">
+    <span class="bg-white border border-black/10 rounded-full px-4 py-1.5 text-xs">#KpopFashion</span>
+    <span class="bg-white border border-black/10 rounded-full px-4 py-1.5 text-xs">#PartyWear</span>
+    <span class="bg-white border border-black/10 rounded-full px-4 py-1.5 text-xs">#StylingTips</span>
+    <span class="bg-white border border-black/10 rounded-full px-4 py-1.5 text-xs">#KoreanFashion</span>
+  </div>
+
+  <!-- Share -->
+  <div class="flex items-center gap-4 mt-6 reveal">
+    <span class="text-xs uppercase tracking-widest text-black/50">Share:</span>
+    <button aria-label="Share on Instagram" class="w-9 h-9 rounded-full border border-black/20 flex items-center justify-center hover:bg-black hover:text-white transition">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>
+    </button>
+    <button aria-label="Share on WhatsApp" class="w-9 h-9 rounded-full border border-black/20 flex items-center justify-center hover:bg-black hover:text-white transition">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2z"/></svg>
+    </button>
+    <button aria-label="Copy link" id="copyLinkBtn" class="w-9 h-9 rounded-full border border-black/20 flex items-center justify-center hover:bg-black hover:text-white transition">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>
+    </button>
+    <span id="copyMsg" class="text-xs text-green-600 hidden">Link copied!</span>
+  </div>
+</section>
+
+<!-- ============ RELATED POSTS ============ -->
+<section class="px-6 max-w-7xl mx-auto pb-24 border-t border-black/10 pt-16">
+  <h2 class="font-display text-2xl font-bold mb-8 reveal">More From The Journal</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <a href="blog-post.html" class="related-card bg-white rounded-2xl overflow-hidden reveal">
+      <img src="https://images.unsplash.com/photo-1596783074918-c84cb06531ca?w=500&q=80" alt="Related post" class="w-full aspect-[4/3] object-cover">
+      <div class="p-5">
+        <p class="text-xs uppercase tracking-widest text-black/50 mb-2">Trends</p>
+        <h3 class="font-display text-base font-semibold">Soft Girl Aesthetic: The Pastel Trend Taking Over 2026</h3>
+      </div>
+    </a>
+    <a href="blog-post.html" class="related-card bg-white rounded-2xl overflow-hidden reveal" style="transition-delay:0.1s;">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&q=80" alt="Related post" class="w-full aspect-[4/3] object-cover">
+      <div class="p-5">
+        <p class="text-xs uppercase tracking-widest text-black/50 mb-2">Styling Tips</p>
+        <h3 class="font-display text-base font-semibold">Accessorizing 101: Elevating a Simple Slip Dress</h3>
+      </div>
+    </a>
+    <a href="blog-post.html" class="related-card bg-white rounded-2xl overflow-hidden reveal" style="transition-delay:0.2s;">
+      <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=500&q=80" alt="Related post" class="w-full aspect-[4/3] object-cover">
+      <div class="p-5">
+        <p class="text-xs uppercase tracking-widest text-black/50 mb-2">K-pop Fashion</p>
+        <h3 class="font-display text-base font-semibold">Decoding Seoul Street Style: What's Trending on Garosugil</h3>
+      </div>
+    </a>
+  </div>
+</section>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    document.getElementById('progressBar').style.width = progress + '%';
+  });
+
+  // Copy link
+  document.getElementById('copyLinkBtn').addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const msg = document.getElementById('copyMsg');
+      msg.classList.remove('hidden');
+      setTimeout(() => msg.classList.add('hidden'), 2000);
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | KWĒN</title>
+<meta name="description" content="KWĒN's privacy policy - how we collect, use, and protect your personal information.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  body { overflow-x: hidden; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fadeUp { animation: fadeUp 0.6s ease forwards; }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+  #mobileMenu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+  #mobileMenu.open { transform: translateX(0); }
+  .nav-link { position: relative; }
+  .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: #000; transition: width 0.3s ease; }
+  .nav-link:hover::after { width: 100%; }
+  /* Sticky TOC active link */
+  .toc-link.active { color: #000; font-weight: 600; border-left-color: #000 !important; }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#faf7f2]/90 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display text-2xl md:text-3xl font-bold tracking-widest">KWĒN</a>
+    <div class="hidden lg:flex items-center gap-8 text-sm uppercase tracking-wide">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <button id="menuBtn" aria-label="Menu" class="lg:hidden">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+    </button>
+  </div>
+</nav>
+
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#faf7f2] z-50 shadow-2xl lg:hidden">
+  <div class="flex justify-end p-6">
+    <button id="closeMenuBtn">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="flex flex-col gap-6 px-8 text-lg uppercase tracking-wide">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<section class="pt-32 pb-10 px-6 max-w-5xl mx-auto">
+  <p class="text-xs text-black/50 mb-2 animate-fadeUp">Home / Privacy Policy</p>
+  <h1 class="font-display text-4xl md:text-5xl font-bold animate-fadeUp">Privacy Policy</h1>
+  <p class="text-black/50 text-sm mt-2 animate-fadeUp">Last updated: July 1, 2026</p>
+</section>
+
+<!-- ============ CONTENT LAYOUT ============ -->
+<section class="px-6 max-w-5xl mx-auto pb-24">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+
+    <!-- Table of Contents -->
+    <aside class="hidden lg:block lg:col-span-1">
+      <div class="sticky top-28 space-y-1">
+        <p class="text-xs uppercase tracking-widest text-black/40 mb-3">On This Page</p>
+        <a href="#info-we-collect" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Information We Collect</a>
+        <a href="#how-we-use" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">How We Use Your Data</a>
+        <a href="#sharing" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Data Sharing</a>
+        <a href="#security" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Data Security</a>
+        <a href="#cookies" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Cookies</a>
+        <a href="#your-rights" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Your Rights</a>
+        <a href="#contact-us" class="toc-link block text-sm py-2 pl-3 border-l-2 border-black/10 text-black/60 hover:text-black transition">Contact Us</a>
+      </div>
+    </aside>
+
+    <!-- Policy Content -->
+    <div class="lg:col-span-3 bg-white rounded-2xl p-6 md:p-10 space-y-10 text-sm leading-relaxed text-black/70">
+
+      <p>At KWĒN, we respect your privacy and are committed to protecting your personal data. This policy explains how we collect, use, and safeguard your information when you visit our website or make a purchase.</p>
+
+      <div id="info-we-collect">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">1. Information We Collect</h2>
+        <p class="mb-3">We collect information you provide directly to us, including:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Name, email address, phone number, and shipping/billing address</li>
+          <li>Payment information (processed securely via Stripe/Razorpay — we never store card details)</li>
+          <li>Order history and preferences</li>
+          <li>Account credentials (encrypted)</li>
+          <li>Device and browser information collected automatically via cookies</li>
+        </ul>
+      </div>
+
+      <div id="how-we-use">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">2. How We Use Your Data</h2>
+        <p class="mb-3">We use your information to:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Process and fulfill your orders</li>
+          <li>Send order confirmations, shipping updates, and support communications</li>
+          <li>Personalize your shopping experience and product recommendations</li>
+          <li>Improve our website, products, and services</li>
+          <li>Send marketing communications (only with your consent, and you can opt out anytime)</li>
+          <li>Detect and prevent fraud</li>
+        </ul>
+      </div>
+
+      <div id="sharing">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">3. Data Sharing</h2>
+        <p>We do not sell your personal data. We share information only with trusted third parties necessary to operate our business: payment processors (Stripe, Razorpay), shipping partners (Shiprocket, Delhivery, Blue Dart, DHL), and email service providers (Resend) — all bound by strict confidentiality agreements.</p>
+      </div>
+
+      <div id="security">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">4. Data Security</h2>
+        <p>We implement industry-standard security measures including encryption, secure cookies, and regular security audits to protect your data from unauthorized access, alteration, or disclosure.</p>
+      </div>
+
+      <div id="cookies">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">5. Cookies</h2>
+        <p>We use cookies to remember your preferences, keep you logged in, and analyze site traffic. You can control cookie preferences through your browser settings at any time.</p>
+      </div>
+
+      <div id="your-rights">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">6. Your Rights</h2>
+        <p class="mb-3">You have the right to:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Access the personal data we hold about you</li>
+          <li>Request correction or deletion of your data</li>
+          <li>Opt out of marketing communications</li>
+          <li>Withdraw consent for data processing at any time</li>
+        </ul>
+      </div>
+
+      <div id="contact-us">
+        <h2 class="font-display text-xl font-semibold text-black mb-3">7. Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy, please reach out to us at <a href="mailto:privacy@kwen.com" class="underline">privacy@kwen.com</a> or visit our <a href="contact.html" class="underline">Contact page</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  // Scroll spy for table of contents
+  const sections = document.querySelectorAll('[id]');
+  const tocLinks = document.querySelectorAll('.toc-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= sectionTop - 150) {
+        current = section.getAttribute('id');
+      }
+    });
+    tocLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

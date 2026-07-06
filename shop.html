@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop All | KWĒN</title>
+<meta name="description" content="Shop the full KWĒN collection - Korean party wear, streetwear, and premium fashion for women.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  body { overflow-x: hidden; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeUp { animation: fadeUp 0.6s ease forwards; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+
+  #mobileMenu, #mobileFilters {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #mobileMenu { transform: translateX(100%); }
+  #mobileMenu.open { transform: translateX(0); }
+  #mobileFilters { transform: translateX(-100%); }
+  #mobileFilters.open { transform: translateX(0); }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; width: 0; height: 1px;
+    bottom: -4px; left: 0; background-color: #000;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  /* Custom checkbox */
+  .filter-checkbox {
+    appearance: none;
+    width: 16px; height: 16px;
+    border: 1px solid #00000040;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  .filter-checkbox:checked {
+    background-color: #000;
+    border-color: #000;
+  }
+  .filter-checkbox:checked::after {
+    content: '✓';
+    color: white;
+    font-size: 11px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#faf7f2]/90 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display text-2xl md:text-3xl font-bold tracking-widest">KWĒN</a>
+
+    <div class="hidden lg:flex items-center gap-8 text-sm uppercase tracking-wide">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link font-semibold">Shop</a>
+      <a href="#" class="nav-link">New Arrivals</a>
+      <a href="#" class="nav-link">Party Wear</a>
+      <a href="#" class="nav-link">Sale</a>
+      <a href="#" class="nav-link">About</a>
+    </div>
+
+    <div class="flex items-center gap-5">
+      <button aria-label="Search" class="hover:opacity-60 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+      </button>
+      <button aria-label="Wishlist" class="hidden sm:block hover:opacity-60 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+        </svg>
+      </button>
+      <button aria-label="Account" class="hidden sm:block hover:opacity-60 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.964 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </button>
+      <button aria-label="Cart" class="relative hover:opacity-60 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.980-4.804 2.558-7.436a1.125 1.125 0 00-1.087-1.564H5.106M7.5 14.25L5.106 5.272M7.5 14.25L5.106 5.272" />
+        </svg>
+        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+      </button>
+      <button id="menuBtn" aria-label="Menu" class="lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#faf7f2] z-50 shadow-2xl lg:hidden">
+  <div class="flex justify-end p-6">
+    <button id="closeMenuBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <div class="flex flex-col gap-6 px-8 text-lg uppercase tracking-wide">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="#">New Arrivals</a>
+    <a href="#">Party Wear</a>
+    <a href="#">Sale</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="pt-32 pb-10 px-6 max-w-7xl mx-auto">
+  <p class="text-xs text-black/50 mb-2 animate-fadeUp">Home / Shop</p>
+  <h1 class="font-display text-4xl md:text-5xl font-bold animate-fadeUp">Shop All</h1>
+  <p class="text-black/60 text-sm mt-2 animate-fadeUp">128 products</p>
+</section>
+
+<!-- Placeholder: filters + product grid go here in the next part -->
+<!-- ============ SHOP LAYOUT: FILTERS + GRID ============ -->
+<section class="px-6 max-w-7xl mx-auto pb-24">
+  <div class="flex flex-col lg:flex-row gap-10">
+
+    <!-- Mobile Filter Trigger -->
+    <div class="flex lg:hidden items-center justify-between mb-2">
+      <button id="openFiltersBtn" class="flex items-center gap-2 border border-black/20 rounded-full px-5 py-2 text-sm uppercase tracking-wide">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m9 12h3.75M13.5 18a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-6.75 0H7.5m3-6h9.75M10.5 12a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0m-6.75 0H7.5" />
+        </svg>
+        Filters
+      </button>
+      <select class="border border-black/20 rounded-full px-4 py-2 text-sm bg-white">
+        <option>Sort: Featured</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest First</option>
+        <option>Best Rating</option>
+      </select>
+    </div>
+
+    <!-- Desktop Sidebar Filters -->
+    <aside class="hidden lg:block w-64 shrink-0 reveal">
+      <div class="sticky top-28">
+        <h3 class="font-display text-lg font-semibold mb-6">Filters</h3>
+
+        <!-- Category -->
+        <div class="mb-8">
+          <h4 class="text-xs uppercase tracking-widest text-black/50 mb-4">Category</h4>
+          <div class="space-y-3 text-sm">
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="filter-checkbox"> Party Dresses</label>
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="filter-checkbox"> Tops & Corsets</label>
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="filter-checkbox"> Skirts</label>
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="filter-checkbox"> Streetwear</label>
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="filter-checkbox"> Accessories</label>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="mb-8">
+          <h4 class="text-xs uppercase tracking-widest text-black/50 mb-4">Price Range</h4>
+          <input type="range" min="0" max="5000" value="5000" class="w-full accent-black">
+          <div class="flex justify-between text-xs text-black/50 mt-2">
+            <span>₹0</span>
+            <span>₹5,000+</span>
+          </div>
+        </div>
+
+        <!-- Size -->
+        <div class="mb-8">
+          <h4 class="text-xs uppercase tracking-widest text-black/50 mb-4">Size</h4>
+          <div class="grid grid-cols-4 gap-2">
+            <button class="border border-black/20 rounded-lg py-2 text-xs hover:border-black transition">XS</button>
+            <button class="border border-black/20 rounded-lg py-2 text-xs hover:border-black transition">S</button>
+            <button class="border border-black rounded-lg py-2 text-xs bg-black text-white">M</button>
+            <button class="border border-black/20 rounded-lg py-2 text-xs hover:border-black transition">L</button>
+            <button class="border border-black/20 rounded-lg py-2 text-xs hover:border-black transition">XL</button>
+            <button class="border border-black/20 rounded-lg py-2 text-xs hover:border-black transition">XXL</button>
+          </div>
+        </div>
+
+        <!-- Color -->
+        <div class="mb-8">
+          <h4 class="text-xs uppercase tracking-widest text-black/50 mb-4">Color</h4>
+          <div class="flex flex-wrap gap-3">
+            <button class="w-7 h-7 rounded-full bg-black ring-2 ring-offset-2 ring-black" aria-label="Black"></button>
+            <button class="w-7 h-7 rounded-full bg-white border border-black/20" aria-label="White"></button>
+            <button class="w-7 h-7 rounded-full bg-[#f5d6dd]" aria-label="Pink"></button>
+            <button class="w-7 h-7 rounded-full bg-[#d9d3f0]" aria-label="Lavender"></button>
+            <button class="w-7 h-7 rounded-full bg-[#f1e8dd] border border-black/10" aria-label="Beige"></button>
+            <button class="w-7 h-7 rounded-full bg-[#c9c9c9]" aria-label="Silver"></button>
+          </div>
+        </div>
+
+        <!-- Rating -->
+        <div class="mb-8">
+          <h4 class="text-xs uppercase tracking-widest text-black/50 mb-4">Rating</h4>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="filter-checkbox"> ★★★★★ & up</label>
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="filter-checkbox"> ★★★★☆ & up</label>
+            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="filter-checkbox"> ★★★☆☆ & up</label>
+          </div>
+        </div>
+
+        <button class="w-full border border-black rounded-full py-3 text-xs uppercase tracking-widest hover:bg-black hover:text-white transition">
+          Clear All Filters
+        </button>
+      </div>
+    </aside>
+
+    <!-- Product Grid -->
+    <div class="flex-1">
+
+      <!-- Desktop sort bar -->
+      <div class="hidden lg:flex items-center justify-between mb-6">
+        <p class="text-sm text-black/60">Showing 1–12 of 128 results</p>
+        <select class="border border-black/20 rounded-full px-4 py-2 text-sm bg-white">
+          <option>Sort: Featured</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Newest First</option>
+          <option>Best Rating</option>
+        </select>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6" id="productGrid">
+        <!-- Product cards will be inserted here in the next part -->
+        <!-- Product 1 -->
+<div class="group reveal">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <span class="absolute top-3 left-3 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">New</span>
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&q=80" alt="Blush Satin Slip Dress" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(24)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Blush Satin Slip Dress</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹2,499</span> <span class="text-black/40 line-through ml-2">₹3,299</span></p>
+</div>
+
+<!-- Product 2 -->
+<div class="group reveal" style="transition-delay:0.05s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500&q=80" alt="Lavender Corset Top" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(18)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Lavender Corset Top</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹1,899</span></p>
+</div>
+
+<!-- Product 3 -->
+<div class="group reveal" style="transition-delay:0.1s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <span class="absolute top-3 left-3 z-10 bg-[#f5d6dd] text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">-25%</span>
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500&q=80" alt="Silver Sequin Mini Dress" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★☆ <span class="text-black/50 ml-1">(31)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Silver Sequin Mini Dress</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹3,199</span> <span class="text-black/40 line-through ml-2">₹4,199</span></p>
+</div>
+
+<!-- Product 4 -->
+<div class="group reveal" style="transition-delay:0.15s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1551803091-e20673f15770?w=500&q=80" alt="Beige Wrap Party Dress" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(12)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Beige Wrap Party Dress</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹2,799</span></p>
+</div>
+
+<!-- Product 5 -->
+<div class="group reveal" style="transition-delay:0.2s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <span class="absolute top-3 left-3 z-10 bg-[#f5d6dd] text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">-40%</span>
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&q=80" alt="Rosé Ruffle Party Dress" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(41)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Rosé Ruffle Party Dress</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹1,799</span> <span class="text-black/40 line-through ml-2">₹2,999</span></p>
+</div>
+
+<!-- Product 6 -->
+<div class="group reveal" style="transition-delay:0.25s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500&q=80" alt="Metallic Halter Dress" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★☆ <span class="text-black/50 ml-1">(9)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Metallic Halter Dress</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹2,449</span> <span class="text-black/40 line-through ml-2">₹3,499</span></p>
+</div>
+
+<!-- Product 7 -->
+<div class="group reveal" style="transition-delay:0.3s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <span class="absolute top-3 left-3 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">New</span>
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1571908599407-cdb918ed83bf?w=500&q=80" alt="Pearl Trim Blazer Dress" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(15)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Pearl Trim Blazer Dress</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹3,299</span></p>
+</div>
+
+<!-- Product 8 -->
+<div class="group reveal" style="transition-delay:0.35s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?w=500&q=80" alt="Onyx Slit Gown" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(27)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Onyx Slit Gown</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹2,899</span> <span class="text-black/40 line-through ml-2">₹4,499</span></p>
+</div>
+
+<!-- Product 9 -->
+<div class="group reveal" style="transition-delay:0.4s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=500&q=80" alt="K-pop Edit Two Piece Set" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★☆ <span class="text-black/50 ml-1">(19)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">K-pop Edit Two Piece Set</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹2,199</span></p>
+</div>
+
+<!-- Product 10 -->
+<div class="group reveal" style="transition-delay:0.45s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <span class="absolute top-3 left-3 z-10 bg-[#f5d6dd] text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">-15%</span>
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?w=500&q=80" alt="Silver Zip Cargo Set" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(22)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Silver Zip Cargo Set</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹2,039</span> <span class="text-black/40 line-through ml-2">₹2,399</span></p>
+</div>
+
+<!-- Product 11 -->
+<div class="group reveal" style="transition-delay:0.5s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&q=80" alt="Silver Chain Belt" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★☆ <span class="text-black/50 ml-1">(8)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Silver Chain Belt</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹899</span></p>
+</div>
+
+<!-- Product 12 -->
+<div class="group reveal" style="transition-delay:0.55s;">
+  <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+    <span class="absolute top-3 left-3 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">New</span>
+    <button aria-label="Wishlist" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition hover:scale-110">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+    </button>
+    <img src="https://images.unsplash.com/photo-1544441893-675973e31985?w=500&q=80" alt="Beige Trench Party Coat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+    <button class="absolute bottom-0 left-0 right-0 bg-black text-white text-xs uppercase tracking-widest py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Quick Add</button>
+  </a>
+  <div class="flex text-[#f5c518] text-xs mb-1">★★★★★ <span class="text-black/50 ml-1">(33)</span></div>
+  <h3 class="text-sm md:text-base font-medium"><a href="product.html" class="hover:underline">Beige Trench Party Coat</a></h3>
+  <p class="text-sm mt-1"><span class="font-semibold">₹3,599</span></p>
+</div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex items-center justify-center gap-2 mt-14">
+        <button class="w-9 h-9 rounded-full border border-black/20 flex items-center justify-center hover:bg-black hover:text-white transition">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+        </button>
+        <button class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center text-sm">1</button>
+        <button class="w-9 h-9 rounded-full border border-black/20 flex items-center justify-center text-sm hover:bg-black hover:text-white transition">2</button>
+        <button class="w-9 h-9 rounded-full border border-black/20 flex items-center justify-center text-sm hover:bg-black hover:text-white transition">3</button>
+        <span class="text-black/40">...</span>
+        <button class="w-9 h-9 rounded-full border border-black/20 flex items-center justify-center text-sm hover:bg-black hover:text-white transition">11</button>
+        <button class="w-9 h-9 rounded-full border border-black/20 flex items-center justify-center hover:bg-black hover:text-white transition">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mobile Filters Drawer -->
+<div id="mobileFilters" class="fixed top-0 left-0 h-full w-4/5 max-w-sm bg-[#faf7f2] z-50 shadow-2xl lg:hidden overflow-y-auto">
+  <div class="flex justify-between items-center p-6 border-b border-black/10">
+    <h3 class="font-display text-lg font-semibold">Filters</h3>
+    <button id="closeFiltersBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  <div class="p-6">
+    <h4 class="text-xs uppercase tracking-widest text-black/50 mb-4">Category</h4>
+    <div class="space-y-3 text-sm mb-8">
+      <label class="flex items-center gap-3"><input type="checkbox" class="filter-checkbox"> Party Dresses</label>
+      <label class="flex items-center gap-3"><input type="checkbox" class="filter-checkbox"> Tops & Corsets</label>
+      <label class="flex items-center gap-3"><input type="checkbox" class="filter-checkbox"> Skirts</label>
+      <label class="flex items-center gap-3"><input type="checkbox" class="filter-checkbox"> Streetwear</label>
+    </div>
+    <button id="applyFiltersBtn" class="w-full bg-black text-white rounded-full py-3 text-xs uppercase tracking-widest">
+      Apply Filters
+    </button>
+  </div>
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('active');
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+  // Mobile filters drawer
+  const openFiltersBtn = document.getElementById('openFiltersBtn');
+  const closeFiltersBtn = document.getElementById('closeFiltersBtn');
+  const applyFiltersBtn = document.getElementById('applyFiltersBtn');
+  const mobileFilters = document.getElementById('mobileFilters');
+
+  openFiltersBtn.addEventListener('click', () => mobileFilters.classList.add('open'));
+  closeFiltersBtn.addEventListener('click', () => mobileFilters.classList.remove('open'));
+  applyFiltersBtn.addEventListener('click', () => mobileFilters.classList.remove('open'));
+</script>
+
+</body>
+</html>

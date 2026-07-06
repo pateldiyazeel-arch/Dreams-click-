@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQs | KWĒN</title>
+<meta name="description" content="Frequently asked questions about KWĒN orders, shipping, returns, and more.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  body { overflow-x: hidden; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeUp { animation: fadeUp 0.6s ease forwards; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+
+  #mobileMenu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+  #mobileMenu.open { transform: translateX(0); }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; width: 0; height: 1px;
+    bottom: -4px; left: 0; background-color: #000;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .faq-answer.open { max-height: 300px; }
+  .faq-icon { transition: transform 0.3s ease; }
+  .faq-icon.open { transform: rotate(45deg); }
+
+  .category-btn.active {
+    background: #000; color: #fff;
+  }
+
+  .faq-item { display: block; }
+  .faq-item.hidden-item { display: none; }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#faf7f2]/90 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display text-2xl md:text-3xl font-bold tracking-widest">KWĒN</a>
+    <div class="hidden lg:flex items-center gap-8 text-sm uppercase tracking-wide">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="faq.html" class="nav-link font-semibold">FAQs</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="flex items-center gap-5">
+      <button aria-label="Cart" class="relative hover:opacity-60 transition">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.980-4.804 2.558-7.436a1.125 1.125 0 00-1.087-1.564H5.106M7.5 14.25L5.106 5.272M7.5 14.25L5.106 5.272" /></svg>
+        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+      </button>
+      <button id="menuBtn" aria-label="Menu" class="lg:hidden">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#faf7f2] z-50 shadow-2xl lg:hidden">
+  <div class="flex justify-end p-6">
+    <button id="closeMenuBtn">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="flex flex-col gap-6 px-8 text-lg uppercase tracking-wide">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="faq.html">FAQs</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- ============ HEADER + SEARCH ============ -->
+<section class="pt-32 pb-10 px-6 max-w-3xl mx-auto text-center">
+  <p class="uppercase tracking-[0.3em] text-xs text-black/50 mb-3 animate-fadeUp">Help Center</p>
+  <h1 class="font-display text-4xl md:text-5xl font-bold mb-8 animate-fadeUp">Frequently Asked Questions</h1>
+  <input type="text" id="faqSearch" placeholder="Search for a question..." class="w-full px-5 py-3.5 rounded-full border border-black/20 bg-white text-sm focus:outline-none focus:border-black transition-colors animate-fadeUp">
+</section>
+
+<!-- ============ CATEGORY FILTER ============ -->
+<section class="px-6 max-w-5xl mx-auto pb-10">
+  <div class="flex flex-wrap justify-center gap-3 reveal">
+    <button class="category-btn active border border-black/20 rounded-full px-5 py-2 text-xs uppercase tracking-wide" data-category="all">All</button>
+    <button class="category-btn border border-black/20 rounded-full px-5 py-2 text-xs uppercase tracking-wide" data-category="orders">Orders</button>
+    <button class="category-btn border border-black/20 rounded-full px-5 py-2 text-xs uppercase tracking-wide" data-category="shipping">Shipping</button>
+    <button class="category-btn border border-black/20 rounded-full px-5 py-2 text-xs uppercase tracking-wide" data-category="returns">Returns</button>
+    <button class="category-btn border border-black/20 rounded-full px-5 py-2 text-xs uppercase tracking-wide" data-category="payment">Payment</button>
+    <button class="category-btn border border-black/20 rounded-full px-5 py-2 text-xs uppercase tracking-wide" data-category="products">Products</button>
+  </div>
+</section>
+
+<!-- ============ FAQ LIST ============ -->
+<section class="px-6 max-w-3xl mx-auto pb-24">
+  <div class="space-y-3" id="faqList">
+
+    <div class="faq-item bg-white rounded-xl overflow-hidden reveal" data-category="orders" data-question="how do i place an order">
+      <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+        <span class="text-sm font-medium">How do I place an order?</span>
+        <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <div class="faq-answer px-5"><p class="text-sm text-black/60 pb-5">Simply browse our Shop page, select your size and color, add to cart, and proceed through our secure checkout. You'll get an order confirmation email instantly.</p></div>
+    </div>
+
+    <div class="faq-item bg-white rounded-xl overflow-hidden reveal" data-category="orders" data-question="can i cancel or modify my order">
+      <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+        <span class="text-sm font-medium">Can I cancel or modify my order?</span>
+        <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <div class="faq-answer px-5"><p class="text-sm text-black/60 pb-5">You can cancel or modify your order within 1 hour of placing it from your Dashboard → Order History. After that, the order enters processing and can't be changed.</p></div>
+    </div>
+
+    <div class="faq-item bg-white rounded-xl overflow-hidden reveal" data-category="shipping" data-question="how long does shipping take">
+      <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+        <span class="text-sm font-medium">How long does shipping take?</span>
+        <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <div class="faq-answer px-5"><p class="text-sm text-black/60 pb-5">Standard delivery takes 4–6 business days. Express delivery (1–2 days) and Same Day delivery (metro cities only) are available at checkout for a small fee.</p></div>
+    </div>
+
+    <div class="faq-item bg-white rounded-xl overflow-hidden reveal" data-category="shipping" data-question="do you ship internationally">
+      <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+        <span class="text-sm font-medium">Do you ship internationally?</span>
+        <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <div class="faq-answer px-5"><p class="text-sm text-black/60 pb-5">Currently we only ship within India. International shipping is on our roadmap — subscribe to our newsletter to be the first to know when it launches.</p></div>
+    </div>
+
+    <div class="faq-item bg-white rounded-xl overflow-hidden reveal" data-category="returns" data-question="what is your return policy">
+      <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+        <span class="text-sm font-medium">What is your return policy?</span>
+        <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <div class="faq-answer px-5"><p class="text-sm text-black/60 pb-5">We offer a 7-day return window from the delivery date. Items must be unworn, unwashed, and have original tags attached. Refunds are processed within 5–7 business days.</p></div>
+    </div>
+
+    <div class="faq-item bg-white rounded-xl overflow-hidden reveal" data-category="returns" data-question="how do i initiate a return">
+      <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+        <span class="text-sm font-medium">How do I initiate a return?</span>
+        <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <div class="faq-answer px-5"><p class="text-sm text-black/60 pb-5">Go to Dashboard → Order History, find your order, and click "Return." Our courier partner will schedule a free pickup from your address.</p></div>
+    </div>
+
+    <div class="faq-item bg-white rounded-xl overflow-hidden reveal" data-category="payment" data-question="what payment methods do you accept">
+      <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+        <span class="text-sm font-medium">What payment methods do you accept?</span>
+        <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <div class="faq-answer px-5"><p class="text-sm text-black/60 pb-5">We accept all major credit/debit cards, UPI, Google Pay, wallets via Razorpay, and Cash on Delivery (COD fee applies).</p></div>
+    </div>
+
+    <div class="faq-item bg-white rounded-xl overflow-hidden reveal" data-category="payment" data-question="is cash on delivery available">
+      <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+        <span class="text-sm font-medium">Is Cash on Delivery available?</span>
+        <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <div class="faq-answer px-5"><p class="text-sm text-black/60 pb-5">Yes! COD is available across most serviceable pin codes in India, with a nominal ₹30 handling fee.</p></div>
+    </div>
+
+    <div class="faq-item bg-white rounded-xl overflow-hidden reveal" data-category="products" data-question="how do i find my correct size">
+      <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+        <span class="text-sm font-medium">How do I find my correct size?</span>
+        <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <div class="faq-answer px-5"><p class="text-sm text-black/60 pb-5">Every product page has a "Size Guide" link with detailed measurements. When in doubt, our live chat stylists are happy to help you pick the right fit.</p></div>
+    </div>
+
+    <div class="faq-item bg-white rounded-xl overflow-hidden reveal" data-category="products" data-question="are your products true to size">
+      <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+        <span class="text-sm font-medium">Are your products true to size?</span>
+        <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <div class="faq-answer px-5"><p class="text-sm text-black/60 pb-5">Most of our pieces run true to Asian/Korean sizing, which can run slightly smaller than Western sizing. We recommend checking the specific size chart on each product page.</p></div>
+    </div>
+  </div>
+
+  <p id="noResultsMsg" class="text-center text-black/40 text-sm py-10 hidden">No questions found matching your search.</p>
+</section>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = answer.classList.contains('open');
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('open'));
+      if (!isOpen) {
+        answer.classList.add('open');
+        icon.classList.add('open');
+      }
+    });
+  });
+
+  // Category filter
+  const categoryBtns = document.querySelectorAll('.category-btn');
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      categoryBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const category = btn.dataset.category;
+
+      faqItems.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.classList.remove('hidden-item');
+        } else {
+          item.classList.add('hidden-item');
+        }
+      });
+      checkNoResults();
+    });
+  });
+
+  // Live search
+  const faqSearch = document.getElementById('faqSearch');
+  faqSearch.addEventListener('input', () => {
+    const query = faqSearch.value.toLowerCase().trim();
+
+    // Reset category filter to "All" when searching
+    categoryBtns.forEach(b => b.classList.remove('active'));
+    document.querySelector('[data-category="all"]').classList.add('active');
+
+    faqItems.forEach(item => {
+      const matches = item.dataset.question.includes(query);
+      item.classList.toggle('hidden-item', !matches);
+    });
+    checkNoResults();
+  });
+
+  function checkNoResults() {
+    const visibleCount = document.querySelectorAll('.faq-item:not(.hidden-item)').length;
+    document.getElementById('noResultsMsg').classList.toggle('hidden', visibleCount > 0);
+  }
+</script>
+
+</body>
+</html>

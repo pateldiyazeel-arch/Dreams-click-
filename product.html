@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blush Satin Slip Dress | KWĒN</title>
+<meta name="description" content="Shop the Blush Satin Slip Dress - premium Korean party wear from KWĒN.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  body { overflow-x: hidden; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeUp { animation: fadeUp 0.6s ease forwards; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+
+  #mobileMenu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+  #mobileMenu.open { transform: translateX(0); }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; width: 0; height: 1px;
+    bottom: -4px; left: 0; background-color: #000;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  /* Thumbnail active state */
+  .thumb-active { border-color: #000 !important; }
+
+  /* Main image zoom cursor */
+  #mainImage { cursor: zoom-in; }
+
+  /* Size button selected */
+  .size-btn.selected { background: #000; color: #fff; }
+
+  /* Tab underline */
+  .tab-btn { position: relative; }
+  .tab-btn.active { font-weight: 600; }
+  .tab-btn.active::after {
+    content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+    height: 2px; background: #000;
+  }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#faf7f2]/90 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display text-2xl md:text-3xl font-bold tracking-widest">KWĒN</a>
+    <div class="hidden lg:flex items-center gap-8 text-sm uppercase tracking-wide">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="#" class="nav-link">New Arrivals</a>
+      <a href="#" class="nav-link">Party Wear</a>
+      <a href="#" class="nav-link">Sale</a>
+      <a href="#" class="nav-link">About</a>
+    </div>
+    <div class="flex items-center gap-5">
+      <button aria-label="Search" class="hover:opacity-60 transition">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+      </button>
+      <button aria-label="Wishlist" class="hidden sm:block hover:opacity-60 transition">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+      </button>
+      <button aria-label="Account" class="hidden sm:block hover:opacity-60 transition">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.964 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+      </button>
+      <button aria-label="Cart" class="relative hover:opacity-60 transition">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.980-4.804 2.558-7.436a1.125 1.125 0 00-1.087-1.564H5.106M7.5 14.25L5.106 5.272M7.5 14.25L5.106 5.272" /></svg>
+        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+      </button>
+      <button id="menuBtn" aria-label="Menu" class="lg:hidden">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#faf7f2] z-50 shadow-2xl lg:hidden">
+  <div class="flex justify-end p-6">
+    <button id="closeMenuBtn">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="flex flex-col gap-6 px-8 text-lg uppercase tracking-wide">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="#">New Arrivals</a>
+    <a href="#">Party Wear</a>
+    <a href="#">Sale</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<!-- ============ BREADCRUMB ============ -->
+<div class="pt-28 px-6 max-w-7xl mx-auto">
+  <p class="text-xs text-black/50 animate-fadeUp">
+    <a href="index.html" class="hover:underline">Home</a> / <a href="shop.html" class="hover:underline">Shop</a> / Blush Satin Slip Dress
+  </p>
+</div>
+
+<!-- ============ PRODUCT MAIN ============ -->
+<section class="px-6 max-w-7xl mx-auto py-10">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+
+    <!-- Image Gallery -->
+    <div class="reveal">
+      <div class="relative rounded-2xl overflow-hidden bg-white aspect-[3/4] mb-4">
+        <img id="mainImage" src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=900&q=80" alt="Blush Satin Slip Dress" class="w-full h-full object-cover transition-transform duration-500">
+        <span class="absolute top-4 left-4 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">New</span>
+        <button aria-label="Share" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" /></svg>
+        </button>
+      </div>
+      <div class="grid grid-cols-4 gap-3">
+        <button class="thumb-btn thumb-active rounded-xl overflow-hidden border-2 aspect-square" data-img="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=900&q=80">
+          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=200&q=80" alt="thumb 1" class="w-full h-full object-cover">
+        </button>
+        <button class="thumb-btn rounded-xl overflow-hidden border-2 border-transparent aspect-square" data-img="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=900&q=80">
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=200&q=80" alt="thumb 2" class="w-full h-full object-cover">
+        </button>
+        <button class="thumb-btn rounded-xl overflow-hidden border-2 border-transparent aspect-square" data-img="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=900&q=80">
+          <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=200&q=80" alt="thumb 3" class="w-full h-full object-cover">
+        </button>
+        <button class="thumb-btn rounded-xl overflow-hidden border-2 border-transparent aspect-square relative" data-img="https://images.unsplash.com/photo-1551803091-e20673f15770?w=900&q=80">
+          <img src="https://images.unsplash.com/photo-1551803091-e20673f15770?w=200&q=80" alt="thumb 4" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="reveal" style="transition-delay:0.1s;">
+      <p class="text-xs uppercase tracking-widest text-black/50 mb-2">KWĒN Signature Edit</p>
+      <h1 class="font-display text-3xl md:text-4xl font-bold mb-3">Blush Satin Slip Dress</h1>
+
+      <div class="flex items-center gap-3 mb-5">
+        <div class="flex text-[#f5c518] text-sm">★★★★★</div>
+        <span class="text-sm text-black/60">4.8 (24 reviews)</span>
+      </div>
+
+      <div class="flex items-center gap-3 mb-6">
+        <span class="text-2xl font-semibold">₹2,499</span>
+        <span class="text-lg text-black/40 line-through">₹3,299</span>
+        <span class="bg-[#f5d6dd] text-black text-xs font-bold px-2 py-1 rounded-full">Save 24%</span>
+      </div>
+
+      <p class="text-black/70 text-sm leading-relaxed mb-8">
+        A slinky satin slip dress with a bias cut that skims the body beautifully. Adjustable straps, cowl neckline, and a soft blush tone that photographs like a dream under party lights. Fully lined for a luxe, second-skin feel.
+      </p>
+
+      <!-- Color -->
+      <div class="mb-6">
+        <p class="text-sm font-medium mb-3">Color: <span class="text-black/60 font-normal">Blush Pink</span></p>
+        <div class="flex gap-3">
+          <button class="w-8 h-8 rounded-full bg-[#f5d6dd] ring-2 ring-offset-2 ring-black" aria-label="Blush Pink"></button>
+          <button class="w-8 h-8 rounded-full bg-black" aria-label="Black"></button>
+          <button class="w-8 h-8 rounded-full bg-[#d9d3f0]" aria-label="Lavender"></button>
+        </div>
+      </div>
+
+      <!-- Size -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-3">
+          <p class="text-sm font-medium">Size</p>
+          <a href="#" class="text-xs underline text-black/60">Size Guide</a>
+        </div>
+        <div class="grid grid-cols-6 gap-2">
+          <button class="size-btn border border-black/20 rounded-lg py-2 text-xs hover:border-black transition">XS</button>
+          <button class="size-btn border border-black/20 rounded-lg py-2 text-xs hover:border-black transition">S</button>
+          <button class="size-btn selected border border-black rounded-lg py-2 text-xs transition">M</button>
+          <button class="size-btn border border-black/20 rounded-lg py-2 text-xs hover:border-black transition">L</button>
+          <button class="size-btn border border-black/20 rounded-lg py-2 text-xs hover:border-black transition">XL</button>
+          <button class="size-btn border border-black/20 rounded-lg py-2 text-xs hover:border-black transition opacity-30 cursor-not-allowed" disabled>XXL</button>
+        </div>
+      </div>
+
+      <!-- Quantity + Add to Cart -->
+      <div class="flex items-center gap-4 mb-4">
+        <div class="flex items-center border border-black/20 rounded-full">
+          <button id="qtyMinus" class="w-10 h-10 flex items-center justify-center hover:bg-black/5 rounded-full transition">−</button>
+          <span id="qtyValue" class="w-10 text-center text-sm">1</span>
+          <button id="qtyPlus" class="w-10 h-10 flex items-center justify-center hover:bg-black/5 rounded-full transition">+</button>
+        </div>
+        <button class="flex-1 bg-black text-white rounded-full py-3 uppercase text-sm tracking-widest hover:bg-black/80 transition-all hover:scale-[1.02]">
+          Add to Cart
+        </button>
+        <button aria-label="Add to Wishlist" class="w-12 h-12 rounded-full border border-black/20 flex items-center justify-center hover:border-black transition hover:scale-110">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+        </button>
+      </div>
+
+      <button class="w-full border border-black rounded-full py-3 uppercase text-sm tracking-widest hover:bg-black hover:text-white transition-all mb-6">
+        Buy Now
+      </button>
+
+      <!-- Trust badges -->
+      <div class="grid grid-cols-3 gap-3 text-center border-t border-black/10 pt-6">
+        <div>
+          <svg class="w-5 h-5 mx-auto mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>
+          <p class="text-[11px] text-black/60">Free Shipping ₹999+</p>
+        </div>
+        <div>
+          <svg class="w-5 h-5 mx-auto mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>
+          <p class="text-[11px] text-black/60">Easy 7-Day Returns</p>
+        </div>
+        <div>
+          <svg class="w-5 h-5 mx-auto mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+          <p class="text-[11px] text-black/60">100% Secure Payment</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ============ PRODUCT TABS ============ -->
+<section class="px-6 max-w-7xl mx-auto py-16 reveal">
+  <div class="border-b border-black/10 flex gap-8 mb-10 overflow-x-auto">
+    <button class="tab-btn active pb-4 text-sm uppercase tracking-wide whitespace-nowrap" data-tab="description">Description</button>
+    <button class="tab-btn pb-4 text-sm uppercase tracking-wide whitespace-nowrap text-black/50" data-tab="reviews">Reviews (24)</button>
+    <button class="tab-btn pb-4 text-sm uppercase tracking-wide whitespace-nowrap text-black/50" data-tab="shipping">Shipping & Returns</button>
+    <button class="tab-btn pb-4 text-sm uppercase tracking-wide whitespace-nowrap text-black/50" data-tab="care">Fabric & Care</button>
+  </div>
+
+  <!-- Description Tab -->
+  <div id="tab-description" class="tab-content">
+    <div class="grid md:grid-cols-2 gap-10 text-sm text-black/70 leading-relaxed">
+      <div>
+        <p class="mb-4">
+          The Blush Satin Slip Dress is designed for the moments that call for effortless glamour. Cut on the bias for a fluid drape, it falls just above the knee with a subtle cowl neckline that flatters every body type.
+        </p>
+        <p>Adjustable straps let you customize the fit, while the fully lined satin construction keeps it opaque and comfortable for all-night wear.</p>
+      </div>
+      <ul class="space-y-3">
+        <li class="flex gap-3"><span>✓</span> 100% Premium Satin, fully lined</li>
+        <li class="flex gap-3"><span>✓</span> Adjustable straps & cowl neckline</li>
+        <li class="flex gap-3"><span>✓</span> Midi length, bias cut silhouette</li>
+        <li class="flex gap-3"><span>✓</span> Hidden side zip closure</li>
+        <li class="flex gap-3"><span>✓</span> Model is 5'7" wearing size S</li>
+        <li class="flex gap-3"><span>✓</span> Imported, designed in Seoul</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Reviews Tab -->
+  <div id="tab-reviews" class="tab-content hidden">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="text-center md:text-left">
+        <p class="text-5xl font-display font-bold mb-2">4.8</p>
+        <div class="flex justify-center md:justify-start text-[#f5c518] text-lg mb-2">★★★★★</div>
+        <p class="text-sm text-black/60 mb-6">Based on 24 reviews</p>
+        <div class="space-y-2 text-xs">
+          <div class="flex items-center gap-2"><span class="w-8">5★</span><div class="flex-1 h-2 bg-black/10 rounded-full overflow-hidden"><div class="h-full bg-black w-[80%]"></div></div><span class="w-6 text-right">19</span></div>
+          <div class="flex items-center gap-2"><span class="w-8">4★</span><div class="flex-1 h-2 bg-black/10 rounded-full overflow-hidden"><div class="h-full bg-black w-[13%]"></div></div><span class="w-6 text-right">3</span></div>
+          <div class="flex items-center gap-2"><span class="w-8">3★</span><div class="flex-1 h-2 bg-black/10 rounded-full overflow-hidden"><div class="h-full bg-black w-[8%]"></div></div><span class="w-6 text-right">2</span></div>
+          <div class="flex items-center gap-2"><span class="w-8">2★</span><div class="flex-1 h-2 bg-black/10 rounded-full overflow-hidden"><div class="h-full bg-black w-0"></div></div><span class="w-6 text-right">0</span></div>
+          <div class="flex items-center gap-2"><span class="w-8">1★</span><div class="flex-1 h-2 bg-black/10 rounded-full overflow-hidden"><div class="h-full bg-black w-0"></div></div><span class="w-6 text-right">0</span></div>
+        </div>
+        <button class="mt-6 w-full border border-black rounded-full py-3 text-xs uppercase tracking-widest hover:bg-black hover:text-white transition">Write a Review</button>
+      </div>
+
+      <div class="md:col-span-2 space-y-6">
+        <div class="border-b border-black/10 pb-6">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" class="w-9 h-9 rounded-full object-cover" alt="Aanya R.">
+              <div>
+                <p class="text-sm font-medium">Aanya R. <span class="text-[10px] bg-black/5 px-2 py-0.5 rounded-full ml-1">Verified</span></p>
+                <div class="flex text-[#f5c518] text-xs">★★★★★</div>
+              </div>
+            </div>
+            <span class="text-xs text-black/40">2 weeks ago</span>
+          </div>
+          <p class="text-sm text-black/70 leading-relaxed">The satin quality is stunning and the color is exactly as shown. Wore it to a friend's sangeet and got so many compliments. Runs true to size.</p>
+          <button class="text-xs text-black/50 mt-3 hover:text-black transition">👍 Helpful (8)</button>
+        </div>
+
+        <div class="border-b border-black/10 pb-6">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" class="w-9 h-9 rounded-full object-cover" alt="Meera K.">
+              <div>
+                <p class="text-sm font-medium">Meera K. <span class="text-[10px] bg-black/5 px-2 py-0.5 rounded-full ml-1">Verified</span></p>
+                <div class="flex text-[#f5c518] text-xs">★★★★★</div>
+              </div>
+            </div>
+            <span class="text-xs text-black/40">1 month ago</span>
+          </div>
+          <p class="text-sm text-black/70 leading-relaxed">Beautiful dress, feels premium. Only wish it came in a petite length option since I had to get it slightly altered.</p>
+          <button class="text-xs text-black/50 mt-3 hover:text-black transition">👍 Helpful (5)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shipping Tab -->
+  <div id="tab-shipping" class="tab-content hidden">
+    <div class="grid md:grid-cols-2 gap-10 text-sm text-black/70 leading-relaxed">
+      <div>
+        <h4 class="font-semibold text-black mb-3">Shipping</h4>
+        <ul class="space-y-2">
+          <li>• Free standard shipping on orders above ₹999</li>
+          <li>• Standard delivery: 4–6 business days</li>
+          <li>• Express delivery: 1–2 business days (₹149)</li>
+          <li>• Cash on Delivery available across India</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-black mb-3">Returns</h4>
+        <ul class="space-y-2">
+          <li>• 7-day easy return window from delivery</li>
+          <li>• Item must be unworn with tags attached</li>
+          <li>• Free pickup for return requests</li>
+          <li>• Refund processed within 5–7 business days</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Care Tab -->
+  <div id="tab-care" class="tab-content hidden">
+    <div class="text-sm text-black/70 leading-relaxed max-w-2xl">
+      <ul class="space-y-2">
+        <li>• Dry clean only</li>
+        <li>• Do not bleach</li>
+        <li>• Iron on low heat, inside out</li>
+        <li>• Store on a padded hanger to preserve shape</li>
+        <li>• Avoid direct sunlight for prolonged periods</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RELATED PRODUCTS ============ -->
+<section class="px-6 max-w-7xl mx-auto py-16 border-t border-black/10">
+  <h2 class="font-display text-2xl md:text-3xl font-bold mb-10 reveal">You May Also Like</h2>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+    <div class="group reveal">
+      <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500&q=80" alt="Lavender Corset Top" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      </a>
+      <h3 class="text-sm font-medium"><a href="product.html" class="hover:underline">Lavender Corset Top</a></h3>
+      <p class="text-sm mt-1 font-semibold">₹1,899</p>
+    </div>
+    <div class="group reveal" style="transition-delay:0.1s;">
+      <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500&q=80" alt="Silver Sequin Mini Dress" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      </a>
+      <h3 class="text-sm font-medium"><a href="product.html" class="hover:underline">Silver Sequin Mini Dress</a></h3>
+      <p class="text-sm mt-1 font-semibold">₹3,199</p>
+    </div>
+    <div class="group reveal" style="transition-delay:0.2s;">
+      <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+        <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&q=80" alt="Rosé Ruffle Party Dress" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      </a>
+      <h3 class="text-sm font-medium"><a href="product.html" class="hover:underline">Rosé Ruffle Party Dress</a></h3>
+      <p class="text-sm mt-1 font-semibold">₹1,799</p>
+    </div>
+    <div class="group reveal" style="transition-delay:0.3s;">
+      <a href="product.html" class="relative overflow-hidden rounded-2xl bg-white aspect-[3/4] mb-4 block">
+        <img src="https://images.unsplash.com/photo-1551803091-e20673f15770?w=500&q=80" alt="Beige Wrap Party Dress" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      </a>
+      <h3 class="text-sm font-medium"><a href="product.html" class="hover:underline">Beige Wrap Party Dress</a></h3>
+      <p class="text-sm mt-1 font-semibold">₹2,799</p>
+    </div>
+  </div>
+</section>
+</section>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Thumbnail gallery swap
+  const mainImage = document.getElementById('mainImage');
+  const thumbBtns = document.querySelectorAll('.thumb-btn');
+  thumbBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      mainImage.src = btn.dataset.img;
+      thumbBtns.forEach(b => b.classList.remove('thumb-active'));
+      btn.classList.add('thumb-active');
+    });
+  });
+
+  // Size selection
+  const sizeBtns = document.querySelectorAll('.size-btn:not([disabled])');
+  sizeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sizeBtns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  // Quantity control
+  let qty = 1;
+  const qtyValue = document.getElementById('qtyValue');
+  document.getElementById('qtyPlus').addEventListener('click', () => {
+    qty++;
+    qtyValue.textContent = qty;
+  });
+  document.getElementById('qtyMinus').addEventListener('click', () => {
+    if (qty > 1) qty--;
+    qtyValue.textContent = qty;
+  });
+  // Product tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => { b.classList.remove('active'); b.classList.add('text-black/50'); });
+      btn.classList.add('active');
+      btn.classList.remove('text-black/50');
+      tabContents.forEach(tc => tc.classList.add('hidden'));
+      document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+    });
+  });
+</script>
+
+</body>
+</html>

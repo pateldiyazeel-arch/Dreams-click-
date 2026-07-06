@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | KWĒN</title>
+<meta name="description" content="Get in touch with the KWĒN team - customer support, order help, and general inquiries.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { font-family: 'Poppins', sans-serif; }
+  .font-display { font-family: 'Playfair Display', serif; }
+  body { overflow-x: hidden; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeUp { animation: fadeUp 0.6s ease forwards; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f1e8dd; }
+  ::-webkit-scrollbar-thumb { background: #000; border-radius: 10px; }
+
+  #mobileMenu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+  #mobileMenu.open { transform: translateX(0); }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; width: 0; height: 1px;
+    bottom: -4px; left: 0; background-color: #000;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  .contact-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .contact-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.12); }
+
+  /* FAQ accordion */
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .faq-answer.open { max-height: 200px; }
+  .faq-icon { transition: transform 0.3s ease; }
+  .faq-icon.open { transform: rotate(45deg); }
+</style>
+</head>
+<body class="bg-[#faf7f2] text-black">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-[#faf7f2]/90 backdrop-blur-md border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-display text-2xl md:text-3xl font-bold tracking-widest">KWĒN</a>
+    <div class="hidden lg:flex items-center gap-8 text-sm uppercase tracking-wide">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="#" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link font-semibold">Contact</a>
+    </div>
+    <div class="flex items-center gap-5">
+      <button aria-label="Cart" class="relative hover:opacity-60 transition">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.980-4.804 2.558-7.436a1.125 1.125 0 00-1.087-1.564H5.106M7.5 14.25L5.106 5.272M7.5 14.25L5.106 5.272" /></svg>
+        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+      </button>
+      <button id="menuBtn" aria-label="Menu" class="lg:hidden">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-[#faf7f2] z-50 shadow-2xl lg:hidden">
+  <div class="flex justify-end p-6">
+    <button id="closeMenuBtn">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+  </div>
+  <div class="flex flex-col gap-6 px-8 text-lg uppercase tracking-wide">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="#">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- ============ PAGE HEADER ============ -->
+<section class="pt-32 pb-16 px-6 max-w-7xl mx-auto text-center">
+  <p class="uppercase tracking-[0.3em] text-xs text-black/50 mb-3 animate-fadeUp">We'd Love to Hear From You</p>
+  <h1 class="font-display text-4xl md:text-5xl font-bold animate-fadeUp">Get in Touch</h1>
+</section>
+
+<!-- ============ CONTACT CARDS ============ -->
+<section class="px-6 max-w-7xl mx-auto pb-16">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="contact-card bg-white rounded-2xl p-6 text-center reveal">
+      <div class="w-12 h-12 bg-[#f5d6dd]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+      </div>
+      <h3 class="font-semibold mb-1">Email Us</h3>
+      <p class="text-sm text-black/60">support@kwen.com</p>
+      <p class="text-xs text-black/40 mt-1">Reply within 24 hours</p>
+    </div>
+
+    <div class="contact-card bg-white rounded-2xl p-6 text-center reveal" style="transition-delay:0.1s;">
+      <div class="w-12 h-12 bg-[#d9d3f0]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+      </div>
+      <h3 class="font-semibold mb-1">Call Us</h3>
+      <p class="text-sm text-black/60">+91 1800-123-4567</p>
+      <p class="text-xs text-black/40 mt-1">Mon–Sat, 10 AM – 7 PM</p>
+    </div>
+
+    <div class="contact-card bg-white rounded-2xl p-6 text-center reveal" style="transition-delay:0.2s;">
+      <div class="w-12 h-12 bg-[#f1e8dd] rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
+      </div>
+      <h3 class="font-semibold mb-1">Live Chat</h3>
+      <p class="text-sm text-black/60">Chat with our stylists</p>
+      <button class="text-xs underline mt-1">Start Chat</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT FORM + MAP/INFO ============ -->
+<section class="px-6 max-w-7xl mx-auto pb-20">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+    <!-- Form -->
+    <div class="bg-white rounded-2xl p-6 md:p-8 reveal">
+      <h2 class="font-display text-xl font-semibold mb-6">Send Us a Message</h2>
+      <form id="contactForm" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <input type="text" required placeholder="Your Name" class="px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors">
+          <input type="email" required placeholder="Your Email" class="px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors">
+        </div>
+        <select class="w-full px-4 py-3 rounded-xl border border-black/20 text-sm bg-white focus:outline-none focus:border-black transition-colors">
+          <option>Select Topic</option>
+          <option>Order Issue</option>
+          <option>Product Question</option>
+          <option>Returns & Refunds</option>
+          <option>Partnership / Press</option>
+          <option>Other</option>
+        </select>
+        <textarea required rows="5" placeholder="Your Message" class="w-full px-4 py-3 rounded-xl border border-black/20 text-sm focus:outline-none focus:border-black transition-colors resize-none"></textarea>
+        <button type="submit" class="w-full bg-black text-white rounded-full py-3.5 uppercase text-sm tracking-widest hover:bg-black/80 transition-all hover:scale-[1.02]">
+          Send Message
+        </button>
+        <p id="contactSuccessMsg" class="text-sm text-green-600 text-center hidden">✓ Thanks! We'll get back to you within 24 hours.</p>
+      </form>
+    </div>
+
+    <!-- Quick FAQ Accordion -->
+    <div class="reveal" style="transition-delay:0.1s;">
+      <h2 class="font-display text-xl font-semibold mb-6">Quick Answers</h2>
+      <div class="space-y-3">
+
+        <div class="bg-white rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+            <span class="text-sm font-medium">How long does shipping take?</span>
+            <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="text-sm text-black/60 pb-5">Standard delivery takes 4–6 business days. Express options are available at checkout for 1–2 day delivery.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+            <span class="text-sm font-medium">What's your return policy?</span>
+            <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="text-sm text-black/60 pb-5">We offer a 7-day return window from the delivery date, as long as items are unworn and tags are attached.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+            <span class="text-sm font-medium">Do you ship internationally?</span>
+            <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="text-sm text-black/60 pb-5">Currently we ship across India only. International shipping is coming soon — join our newsletter for updates!</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+            <span class="text-sm font-medium">How do I track my order?</span>
+            <svg class="faq-icon w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          </button>
+          <div class="faq-answer px-5">
+            <p class="text-sm text-black/60 pb-5">Visit our <a href="track-order.html" class="underline">Track Order</a> page and enter your order ID to see live status updates.</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="faq.html" class="inline-block mt-6 text-sm underline">View all FAQs →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = answer.classList.contains('open');
+
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('open'));
+
+      if (!isOpen) {
+        answer.classList.add('open');
+        icon.classList.add('open');
+      }
+    });
+  });
+
+  // Contact form submit
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('contactSuccessMsg').classList.remove('hidden');
+    e.target.reset();
+  });
+</script>
+
+</body>
+</html>
