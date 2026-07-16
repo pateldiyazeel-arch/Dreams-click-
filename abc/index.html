@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artistry Cafe | Where Coffee Meets Creativity</title>
+  <meta name="description" content="Artistry Cafe is a large, cozy café serving great coffee, artisan pizzas, and beautiful desserts. Enjoy outdoor seating, live music, and a warm, welcoming space for breakfast, brunch, lunch, and dinner.">
+  <meta name="keywords" content="cafe, coffee, artisan pizza, brunch, live music, dessert, vegan options, outdoor seating">
+  <meta name="author" content="Artistry Cafe">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Artistry Cafe | Where Coffee Meets Creativity">
+  <meta property="og:description" content="A premium café experience with great coffee, artisan pizzas, live music, and cozy outdoor seating.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Artistry Cafe | Where Coffee Meets Creativity">
+  <meta name="twitter:description" content="A premium café experience with great coffee, artisan pizzas, live music, and cozy outdoor seating.">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================== LOADING SCREEN ===================== -->
+  <div id="loadingScreen" class="loading-screen" aria-hidden="true">
+    <div class="loading-content">
+      <div class="loading-cup">
+        <div class="cup-steam">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="cup-body">
+          <div class="cup-liquid"></div>
+        </div>
+        <div class="cup-handle"></div>
+      </div>
+      <h1 class="loading-logo">Artistry<span>Cafe</span></h1>
+      <div class="loading-bar">
+        <div class="loading-bar-fill" id="loadingBarFill"></div>
+      </div>
+      <p class="loading-text" id="loadingPercent">0%</p>
+    </div>
+  </div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo">Artistry<span>Cafe</span></a>
+    
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#menu" class="nav-link">Menu</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#reviews" class="nav-link">Reviews</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  
+  <!-- Fullscreen mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#home" class="mobile-nav-link">Home</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#menu" class="mobile-nav-link">Menu</a>
+    <a href="#services" class="mobile-nav-link">Services</a>
+    <a href="#gallery" class="mobile-nav-link">Gallery</a>
+    <a href="#reviews" class="mobile-nav-link">Reviews</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </div>
+</header>
+
+<!-- ===================== HERO SECTION ===================== -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  
+  <!-- Floating particles -->
+  <div class="particles" id="particles" aria-hidden="true"></div>
+  
+  <div class="hero-content" id="heroContent">
+    <p class="hero-eyebrow">Est. artisan coffee &amp; kitchen</p>
+    <h1 class="hero-title">Artistry <span>Cafe</span></h1>
+    <p class="hero-subtitle">Where Coffee Meets Creativity</p>
+    <p class="hero-desc">
+      Sink into our sun-lit corners or shaded outdoor seating, and let slow mornings
+      and long evenings unfold over hand-poured coffee, artisan pizzas, and desserts
+      made to be lingered over.
+    </p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-primary">View Menu</a>
+      <a href="#contact" class="btn btn-outline">Reserve Table</a>
+    </div>
+  </div>
+  
+  <div class="scroll-indicator" id="scrollIndicator">
+    <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- More sections coming in the next steps -->
+
+<!-- ===================== ABOUT SECTION ===================== -->
+  <section class="about" id="about">
+    <div class="section-container about-grid">
+      <div class="about-image reveal" data-reveal="left">
+        <div class="about-image-frame">
+          <div class="about-image-placeholder" role="img" aria-label="Interior of Artistry Cafe with cozy seating"></div>
+          <div class="about-image-badge">
+            <span class="badge-number">12+</span>
+            <span class="badge-label">Years Crafting Coffee</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content reveal" data-reveal="right">
+        <p class="section-eyebrow">Our Story</p>
+        <h2 class="section-title">A Space Built for Slow Mornings &amp; Long Evenings</h2>
+        <p class="about-text">
+          Artistry Cafe began as a single espresso counter and grew into a full-scale
+          café and kitchen loved by locals, remote workers, and travelers alike. We
+          pour specialty coffee, bake fresh desserts daily, and hand-stretch our pizza
+          dough in-house — all served inside a warm, art-filled room or out on our
+          plant-lined patio.
+        </p>
+
+        <ul class="about-highlights">
+          <li><span class="highlight-icon">☕</span> Premium, small-batch coffee</li>
+          <li><span class="highlight-icon">🌿</span> Relaxing indoor &amp; outdoor seating</li>
+          <li><span class="highlight-icon">🍕</span> Hand-stretched artisan pizzas</li>
+          <li><span class="highlight-icon">🍰</span> Beautiful in-house desserts</li>
+          <li><span class="highlight-icon">🎶</span> Live music &amp; evening performances</li>
+          <li><span class="highlight-icon">🛋️</span> Cozy, trendy interiors</li>
+        </ul>
+
+        <div class="about-counters">
+          <div class="counter-item">
+            <span class="counter-number" data-target="48000">0</span>
+            <span class="counter-label">Happy Customers</span>
+          </div>
+          <div class="counter-item">
+            <span class="counter-number" data-target="120000">0</span>
+            <span class="counter-label">Coffees Served</span>
+          </div>
+          <div class="counter-item">
+            <span class="counter-number" data-target="65">0</span>
+            <span class="counter-label">Menu Items</span>
+          </div>
+          <div class="counter-item">
+            <span class="counter-number" data-target="12">0</span>
+            <span class="counter-label">Years of Excellence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- More sections coming in the next steps -->
+  
+  <!-- ===================== WHY CHOOSE US ===================== -->
+  <section class="why-us" id="why-us">
+    <div class="section-container">
+      <p class="section-eyebrow center">Why Choose Us</p>
+      <h2 class="section-title center">The Little Things That Make It Artistry</h2>
+
+      <div class="feature-grid">
+        <div class="feature-card reveal" data-reveal="up">
+          <div class="feature-icon">☕</div>
+          <h3>Great Coffee</h3>
+          <p>Specialty beans, roasted with care and pulled to order by our in-house baristas.</p>
+        </div>
+        <div class="feature-card reveal" data-reveal="up">
+          <div class="feature-icon">🍰</div>
+          <h3>Great Desserts</h3>
+          <p>Fresh pastries and cakes baked daily, made to pair perfectly with your cup.</p>
+        </div>
+        <div class="feature-card reveal" data-reveal="up">
+          <div class="feature-icon">🍕</div>
+          <h3>Fresh Pizza</h3>
+          <p>Hand-stretched artisan pizzas, fired fresh with seasonal toppings.</p>
+        </div>
+        <div class="feature-card reveal" data-reveal="up">
+          <div class="feature-icon">🌿</div>
+          <h3>Outdoor Seating</h3>
+          <p>A plant-lined patio built for sunny mornings and easy evenings.</p>
+        </div>
+        <div class="feature-card reveal" data-reveal="up">
+          <div class="feature-icon">💫</div>
+          <h3>Romantic Ambience</h3>
+          <p>Soft lighting and warm tones designed for quiet, intimate moments.</p>
+        </div>
+        <div class="feature-card reveal" data-reveal="up">
+          <div class="feature-icon">🎶</div>
+          <h3>Live Music</h3>
+          <p>Local musicians take our corner stage on select evenings each week.</p>
+        </div>
+        <div class="feature-card reveal" data-reveal="up">
+          <div class="feature-icon">⚡</div>
+          <h3>Fast Service</h3>
+          <p>Attentive staff who keep things moving without ever feeling rushed.</p>
+        </div>
+        <div class="feature-card reveal" data-reveal="up">
+          <div class="feature-icon">💻</div>
+          <h3>Work Friendly</h3>
+          <p>Fast wifi, plenty of outlets, and quiet corners for solo work sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- More sections coming in the next steps -->
+  <!-- ===================== SERVICES SECTION ===================== -->
+  <section class="services" id="services">
+    <div class="section-container">
+      <p class="section-eyebrow center">What We Offer</p>
+      <h2 class="section-title center">Services Built Around You</h2>
+
+      <div class="services-grid">
+        <div class="service-card reveal" data-reveal="up">
+          <div class="service-icon">🌳</div>
+          <h3>Outdoor Seating</h3>
+          <p>Enjoy your meal on our shaded, plant-lined patio.</p>
+        </div>
+        <div class="service-card reveal" data-reveal="up">
+          <div class="service-icon">🚗</div>
+          <h3>Kerbside Pickup</h3>
+          <p>Order ahead and we'll bring it straight to your car.</p>
+        </div>
+        <div class="service-card reveal" data-reveal="up">
+          <div class="service-icon">📦</div>
+          <h3>No-Contact Delivery</h3>
+          <p>Safe, contact-free delivery straight to your door.</p>
+        </div>
+        <div class="service-card reveal" data-reveal="up">
+          <div class="service-icon">🛵</div>
+          <h3>Delivery</h3>
+          <p>Fresh coffee, pizza, and desserts delivered locally.</p>
+        </div>
+        <div class="service-card reveal" data-reveal="up">
+          <div class="service-icon">🥡</div>
+          <h3>Takeaway</h3>
+          <p>Grab your favorites quickly, packaged with care.</p>
+        </div>
+        <div class="service-card reveal" data-reveal="up">
+          <div class="service-icon">🍽️</div>
+          <h3>Dine-In</h3>
+          <p>Full table service inside our art-filled main room.</p>
+        </div>
+        <div class="service-card reveal" data-reveal="up">
+          <div class="service-icon">📅</div>
+          <h3>Reservations</h3>
+          <p>Book ahead for a guaranteed table, any day of the week.</p>
+        </div>
+        <div class="service-card reveal" data-reveal="up">
+          <div class="service-icon">🔔</div>
+          <h3>Table Service</h3>
+          <p>Attentive staff on hand throughout your entire visit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- More sections coming in the next steps -->
+  
+  <!-- ===================== MENU CATEGORIES ===================== -->
+  <section class="menu" id="menu">
+    <div class="section-container">
+      <p class="section-eyebrow center">Our Menu</p>
+      <h2 class="section-title center">Popular Menu Categories</h2>
+
+      <div class="menu-grid">
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-1"></div>
+          <div class="menu-card-overlay">
+            <h3>Breakfast</h3>
+            <p>Slow mornings done right</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-2"></div>
+          <div class="menu-card-overlay">
+            <h3>Brunch</h3>
+            <p>Weekend favorites, all day</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-3"></div>
+          <div class="menu-card-overlay">
+            <h3>Lunch</h3>
+            <p>Hearty plates, quick service</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-4"></div>
+          <div class="menu-card-overlay">
+            <h3>Dinner</h3>
+            <p>Evenings made for lingering</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-5"></div>
+          <div class="menu-card-overlay">
+            <h3>Desserts</h3>
+            <p>Baked fresh, every single day</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-6"></div>
+          <div class="menu-card-overlay">
+            <h3>Coffee</h3>
+            <p>Specialty roasts, pulled to order</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-7"></div>
+          <div class="menu-card-overlay">
+            <h3>Pizza</h3>
+            <p>Hand-stretched, wood-fired</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-8"></div>
+          <div class="menu-card-overlay">
+            <h3>Quick Bites</h3>
+            <p>Fast, satisfying, on the go</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-9"></div>
+          <div class="menu-card-overlay">
+            <h3>Small Plates</h3>
+            <p>Perfect for sharing</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-10"></div>
+          <div class="menu-card-overlay">
+            <h3>Vegan Options</h3>
+            <p>Plant-based, full of flavor</p>
+          </div>
+        </div>
+        <div class="menu-card reveal" data-reveal="up">
+          <div class="menu-card-image menu-img-11"></div>
+          <div class="menu-card-overlay">
+            <h3>Vegetarian Options</h3>
+            <p>Fresh, seasonal, satisfying</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- More sections coming in the next steps -->
+  
+  <!-- ===================== GALLERY SECTION ===================== -->
+  <section class="gallery" id="gallery">
+    <div class="section-container">
+      <p class="section-eyebrow center">Gallery</p>
+      <h2 class="section-title center">A Look Inside Artistry Cafe</h2>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item gallery-item-tall reveal" data-reveal="up" data-index="0">
+          <div class="gallery-image gallery-img-1"></div>
+          <div class="gallery-overlay">
+            <span class="gallery-view-icon">🔍</span>
+          </div>
+        </div>
+        <div class="gallery-item reveal" data-reveal="up" data-index="1">
+          <div class="gallery-image gallery-img-2"></div>
+          <div class="gallery-overlay">
+            <span class="gallery-view-icon">🔍</span>
+          </div>
+        </div>
+        <div class="gallery-item reveal" data-reveal="up" data-index="2">
+          <div class="gallery-image gallery-img-3"></div>
+          <div class="gallery-overlay">
+            <span class="gallery-view-icon">🔍</span>
+          </div>
+        </div>
+        <div class="gallery-item gallery-item-wide reveal" data-reveal="up" data-index="3">
+          <div class="gallery-image gallery-img-4"></div>
+          <div class="gallery-overlay">
+            <span class="gallery-view-icon">🔍</span>
+          </div>
+        </div>
+        <div class="gallery-item reveal" data-reveal="up" data-index="4">
+          <div class="gallery-image gallery-img-5"></div>
+          <div class="gallery-overlay">
+            <span class="gallery-view-icon">🔍</span>
+          </div>
+        </div>
+        <div class="gallery-item gallery-item-tall reveal" data-reveal="up" data-index="5">
+          <div class="gallery-image gallery-img-6"></div>
+          <div class="gallery-overlay">
+            <span class="gallery-view-icon">🔍</span>
+          </div>
+        </div>
+        <div class="gallery-item reveal" data-reveal="up" data-index="6">
+          <div class="gallery-image gallery-img-7"></div>
+          <div class="gallery-overlay">
+            <span class="gallery-view-icon">🔍</span>
+          </div>
+        </div>
+        <div class="gallery-item reveal" data-reveal="up" data-index="7">
+          <div class="gallery-image gallery-img-8"></div>
+          <div class="gallery-overlay">
+            <span class="gallery-view-icon">🔍</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close gallery">✕</button>
+      <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+      <div class="lightbox-image-wrap">
+        <div class="lightbox-image" id="lightboxImage"></div>
+      </div>
+      <button class="lightbox-next" id="lightboxNext" aria-label="Next image">›</button>
+    </div>
+  </section>
+
+  <!-- More sections coming in the next steps -->
+  
+  <!-- ===================== REVIEWS SECTION ===================== -->
+  <section class="reviews" id="reviews">
+    <div class="section-container">
+      <p class="section-eyebrow center">Testimonials</p>
+      <h2 class="section-title center">What Our Guests Say</h2>
+
+      <div class="reviews-slider">
+        <div class="reviews-track" id="reviewsTrack">
+          <div class="review-card">
+            <div class="review-avatar review-avatar-1"></div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-text">"The patio is my favorite work-from-cafe spot in town. Great coffee, fast wifi, and nobody rushes you."</p>
+            <p class="review-name">Priya Nair</p>
+          </div>
+          <div class="review-card">
+            <div class="review-avatar review-avatar-2"></div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-text">"Brought the whole family for brunch and the kids loved the outdoor seating. The pizza is unreal."</p>
+            <p class="review-name">Daniel Osei</p>
+          </div>
+          <div class="review-card">
+            <div class="review-avatar review-avatar-3"></div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-text">"Live music on Friday nights makes this our go-to date spot. Cozy, romantic, and the desserts are stunning."</p>
+            <p class="review-name">Maria Lopez</p>
+          </div>
+          <div class="review-card">
+            <div class="review-avatar review-avatar-4"></div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-text">"Solid vegan options and quick service even during the lunch rush. My daily coffee stop."</p>
+            <p class="review-name">Tom Richards</p>
+          </div>
+          <div class="review-card">
+            <div class="review-avatar review-avatar-5"></div>
+            <div class="review-rating">★★★★★</div>
+            <p class="review-text">"Wheelchair accessible, dog-friendly patio, and staff who genuinely remember your order. Rare combo."</p>
+            <p class="review-name">Aisha Bello</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-controls">
+        <button class="reviews-btn" id="reviewsPrev" aria-label="Previous review">‹</button>
+        <div class="reviews-dots" id="reviewsDots"></div>
+        <button class="reviews-btn" id="reviewsNext" aria-label="Next review">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- More sections coming in the next steps -->
+  
+  <!-- ===================== CAFE HIGHLIGHTS TIMELINE ===================== -->
+  <section class="timeline-section" id="timeline">
+    <div class="section-container">
+      <p class="section-eyebrow center">A Day at Artistry</p>
+      <h2 class="section-title center">Cafe Highlights Throughout the Day</h2>
+
+      <div class="timeline">
+        <div class="timeline-item reveal" data-reveal="up">
+          <div class="timeline-dot"></div>
+          <span class="timeline-time">7 – 11 AM</span>
+          <h3>Breakfast</h3>
+          <p>Fresh pastries, hearty plates, and the first pour of the day.</p>
+        </div>
+        <div class="timeline-item reveal" data-reveal="up">
+          <div class="timeline-dot"></div>
+          <span class="timeline-time">12 – 3 PM</span>
+          <h3>Lunch</h3>
+          <p>Quick bites and small plates for the midday rush.</p>
+        </div>
+        <div class="timeline-item reveal" data-reveal="up">
+          <div class="timeline-dot"></div>
+          <span class="timeline-time">4 – 6 PM</span>
+          <h3>Evening Coffee</h3>
+          <p>Slow down with a specialty brew as the light softens.</p>
+        </div>
+        <div class="timeline-item reveal" data-reveal="up">
+          <div class="timeline-dot"></div>
+          <span class="timeline-time">7 – 10 PM</span>
+          <h3>Dinner</h3>
+          <p>Wood-fired pizzas and full table service under warm lighting.</p>
+        </div>
+        <div class="timeline-item reveal" data-reveal="up">
+          <div class="timeline-dot"></div>
+          <span class="timeline-time">10 PM – Late</span>
+          <h3>Late Night</h3>
+          <p>Live music, desserts, and sports screenings until close.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FACILITIES ===================== -->
+  <section class="facilities" id="facilities">
+    <div class="section-container">
+      <p class="section-eyebrow center">Facilities</p>
+      <h2 class="section-title center">Everything We Offer, At a Glance</h2>
+
+      <div class="facilities-grid">
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">♿</span>Wheelchair Accessible Entrance</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">🪑</span>Accessible Seating</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">🅿️</span>Accessible Parking</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">🚻</span>Accessible Washroom</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">🅿️</span>Free Parking</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">💰</span>Paid Parking</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">📱</span>Google Pay</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">💳</span>Credit Cards</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">💳</span>Debit Cards</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">📶</span>NFC Payments</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">🐕</span>Dogs Allowed Outside</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">👨‍👩‍👧</span>Family Friendly</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">👥</span>Groups Welcome</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">🧳</span>Tourist Friendly</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">🎓</span>University Students</div>
+        <div class="facility-item reveal" data-reveal="up"><span class="facility-icon">💻</span>Laptop Friendly</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ATMOSPHERE ===================== -->
+  <section class="atmosphere" id="atmosphere">
+    <div class="section-container">
+      <p class="section-eyebrow center">The Vibe</p>
+      <h2 class="section-title center">An Atmosphere For Every Mood</h2>
+
+      <div class="atmosphere-grid">
+        <div class="atmosphere-card reveal" data-reveal="up"><h3>Casual</h3></div>
+        <div class="atmosphere-card reveal" data-reveal="up"><h3>Cozy</h3></div>
+        <div class="atmosphere-card reveal" data-reveal="up"><h3>Quiet</h3></div>
+        <div class="atmosphere-card reveal" data-reveal="up"><h3>Romantic</h3></div>
+        <div class="atmosphere-card reveal" data-reveal="up"><h3>Trendy</h3></div>
+        <div class="atmosphere-card reveal" data-reveal="up"><h3>Upmarket</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RESERVATION CTA ===================== -->
+  <section class="reservation-cta">
+    <div class="reservation-overlay"></div>
+    <div class="reservation-content reveal" data-reveal="up">
+      <h2>Reserve Your Perfect Coffee Experience</h2>
+      <p>Save your table for breakfast, brunch, or a long evening of live music and wood-fired pizza.</p>
+      <a href="#contact" class="btn btn-primary">Reserve Now</a>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT SECTION ===================== -->
+  <section class="contact" id="contact">
+    <div class="section-container contact-grid">
+      <div class="contact-info reveal" data-reveal="left">
+        <p class="section-eyebrow">Get In Touch</p>
+        <h2 class="section-title">Visit or Reach Out to Us</h2>
+
+        <ul class="contact-details">
+          <li><span class="contact-icon">📍</span> 42 Maple Grove Street, Downtown District</li>
+          <li><span class="contact-icon">📞</span> +1 (555) 123-4567</li>
+          <li><span class="contact-icon">✉️</span> hello@artistrycafe.com</li>
+          <li><span class="contact-icon">🕒</span> Mon–Sun: 7:00 AM – 11:00 PM</li>
+        </ul>
+
+        <div class="contact-map" role="img" aria-label="Map showing Artistry Cafe location"></div>
+      </div>
+
+      <form class="contact-form reveal" data-reveal="right" id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="formName">Full Name</label>
+          <input type="text" id="formName" name="name" placeholder="Your name" required>
+          <span class="field-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="formEmail">Email Address</label>
+          <input type="email" id="formEmail" name="email" placeholder="you@example.com" required>
+          <span class="field-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="formPhone">Phone Number</label>
+          <input type="tel" id="formPhone" name="phone" placeholder="(optional)">
+          <span class="field-error"></span>
+        </div>
+        <div class="form-group">
+          <label for="formMessage">Message</label>
+          <textarea id="formMessage" name="message" rows="4" placeholder="Tell us how we can help..." required></textarea>
+          <span class="field-error"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p class="form-success" id="formSuccess" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="section-container footer-grid">
+      <div class="footer-brand">
+        <h3 class="footer-logo">Artistry<span>Cafe</span></h3>
+        <p>Where coffee meets creativity. A warm space for great coffee, artisan pizzas, and unforgettable evenings.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-hours">
+        <h4>Opening Hours</h4>
+        <p>Mon – Fri: 7:00 AM – 11:00 PM</p>
+        <p>Sat – Sun: 8:00 AM – 12:00 AM</p>
+      </div>
+
+      <div class="footer-newsletter">
+        <h4>Newsletter</h4>
+        <p>Get updates on live music nights and seasonal menus.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="Your email" aria-label="Newsletter email">
+          <button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Artistry Cafe. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
